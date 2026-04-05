@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuban Missile Crisis — October 1962</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --us:#1a3a5c;--us-light:#ddeaf8;--us-mid:#2e5f8a;--us-dark:#0d1e30;
+  --ussr:#6b1010;--ussr-light:#f5dada;--ussr-mid:#922020;--ussr-dark:#200808;
+  --ink:#111111;--ink-mid:#2a2420;--ink-light:#4a403a;--ink-faint:#6b5f57;
+  --paper:#f5f0e8;--paper-dark:#ece4d5;--paper-mid:#f0ead8;
+  --gold:#7a5c0e;--gold-light:#b08a20;--gold-faint:#f5edd0;
+  --border:rgba(20,16,12,.18);--rad:6px;
+  --good-bg:#e8f5e8;--good-bdr:#3a8a3a;--good-txt:#1a3a1a;
+  --bad-bg:#fceaea;--bad-bdr:#b03030;--bad-txt:#4a1010;
+  --neu-bg:#f0f0f8;--neu-bdr:#7878aa;--neu-txt:#22224a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Serif 4',Georgia,serif;font-weight:400;background:var(--paper);color:var(--ink);min-height:100vh;line-height:1.6}
+
+/* ── SCREENS ── */
+.screen{display:none;min-height:100vh}
+.screen.active{display:block}
+#setupScreen{background:#080808;align-items:center;justify-content:center;padding:2rem}
+#setupScreen.active{display:flex}
+
+/* ── SETUP ── */
+.setup-card{background:#111;border:1px solid #222;border-radius:12px;padding:2.5rem;max-width:560px;width:100%;color:#ede8dc}
+.setup-eyebrow{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#555;margin-bottom:.4rem}
+.setup-title{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:#ede8dc;margin-bottom:.2rem;line-height:1.2}
+.setup-subtitle{font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;color:#666;margin-bottom:1.6rem;padding-bottom:1.4rem;border-bottom:1px solid #1e1e1e}
+.sf{margin-bottom:1.1rem}
+.sf label{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#777;margin-bottom:.35rem}
+.sf input,.sf select{width:100%;background:#1a1a1a;border:1px solid #2e2e2e;border-radius:6px;padding:.6rem .8rem;font-family:'Source Serif 4',serif;font-size:.95rem;color:#ede8dc;outline:none;transition:border-color .2s}
+.sf input:focus,.sf select:focus{border-color:#555}
+.sf select option{background:#1a1a1a}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.2rem}
+.team-opt{border:2px solid #222;border-radius:8px;padding:.9rem;cursor:pointer;text-align:center;transition:all .2s;background:#161616}
+.team-opt:hover{border-color:#444}
+.team-opt.sel-us{border-color:#2e5f8a;background:#0a1824}
+.team-opt.sel-ussr{border-color:#922020;background:#1a0808}
+.team-flag{font-size:1.8rem;margin-bottom:.3rem}
+.team-name{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#666}
+.team-opt.sel-us .team-name{color:#7aadde}
+.team-opt.sel-ussr .team-name{color:#de8a8a}
+.role-desc-box{background:#1a1a1a;border:1px solid #2e2e2e;border-radius:6px;padding:.7rem .9rem;font-size:.83rem;color:#999;margin-top:.4rem;line-height:1.6;display:none}
+.role-desc-box.vis{display:block}
+.setup-btn{width:100%;background:#ede8dc;color:#080808;border:none;border-radius:8px;padding:.85rem;font-family:'Source Serif 4',serif;font-size:.95rem;font-weight:600;cursor:pointer;letter-spacing:.04em;transition:opacity .2s;margin-top:.5rem}
+.setup-btn:hover{opacity:.88}
+
+/* ── SIM HEADER ── */
+.sim-hdr{background:#080808;color:#ede8dc;padding:.6rem 1.4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:200;border-bottom:1px solid #1a1a1a}
+.hdr-left{display:flex;align-items:center;gap:10px}
+.hdr-title{font-family:'Playfair Display',serif;font-size:.95rem}
+.stag{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 9px;border-radius:20px;border:1px solid #222;color:#666}
+.stag.us{color:#7aadde;border-color:#2e5f8a}
+.stag.ussr{color:#de8a8a;border-color:#922020}
+.hdr-right{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.esc-wrap{display:flex;align-items:center;gap:7px}
+.esc-lbl{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#444}
+.esc-bar{width:130px;height:6px;background:#1a1a1a;border-radius:3px;overflow:hidden;border:1px solid #2a2a2a}
+.esc-fill{height:100%;border-radius:3px;transition:width .8s ease,background .8s ease}
+.esc-num{font-size:.8rem;font-weight:700;min-width:16px;color:#ede8dc}
+.pips{display:flex;gap:5px;align-items:center}
+.pip{width:7px;height:7px;border-radius:50%;background:#1a1a1a;border:1px solid #2a2a2a;transition:all .3s}
+.pip.done{background:#3a3a3a;border-color:#555}
+.pip.active{background:#ede8dc;border-color:#ede8dc}
+
+/* ── BODY ── */
+.sim-body{padding:1.4rem;max-width:900px;margin:0 auto}
+
+/* ── ROUND HEADING ── */
+.rnd-head{margin-bottom:1rem}
+.rnd-num{font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px}
+.rnd-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--ink);margin-bottom:2px}
+.rnd-date{font-size:.82rem;color:var(--ink-light);font-style:italic}
+
+/* ── PHASE BADGE ── */
+.pbadge{display:inline-flex;align-items:center;gap:7px;padding:3px 11px;border-radius:20px;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:.9rem}
+.pdot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+.ph-us{background:var(--us-light);color:#0d2a4a;border:1px solid #a0c4e0}
+.ph-ussr{background:var(--ussr-light);color:#3a0808;border:1px solid #d09090}
+.ph-both{background:var(--gold-faint);color:var(--gold);border:1px solid #c8a840}
+.ph-wait{background:#f0f0f0;color:#3a3a3a;border:1px solid #bbb}
+.ph-ark{background:#140000;color:#de8a8a;border:1px solid #6b1010}
+
+/* ── IMAGE PANEL ── */
+.img-panel{margin-bottom:1rem;border-radius:var(--rad);overflow:hidden;border:1px solid var(--border)}
+.img-panel img{width:100%;height:220px;object-fit:cover;object-position:center;display:block}
+.img-caption{background:#1a1a1a;color:#888;font-size:.72rem;padding:.4rem .75rem;font-style:italic;line-height:1.4}
+.img-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem}
+.img-pair .img-panel{margin-bottom:0}
+.img-pair .img-panel img{height:180px}
+
+/* ── INTEL CARD ── */
+.intel{border-radius:var(--rad);padding:1.1rem 1.3rem;margin-bottom:1rem;border-left:4px solid}
+.int-us{background:var(--us-light);border-color:var(--us)}
+.int-ussr{background:var(--ussr-light);border-color:var(--ussr)}
+.int-neu{background:var(--paper-dark);border-color:var(--gold)}
+.intel-eye{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.5rem}
+.intel p{font-size:.92rem;color:var(--ink-mid);line-height:1.75;margin-bottom:.5rem}
+.intel p:last-child{margin-bottom:0}
+.intel strong{color:var(--ink);font-weight:600}
+.unconf{background:#fef8e8;border:1px dashed var(--gold-light);border-radius:4px;padding:.5rem .75rem;margin-top:.6rem;font-size:.82rem;color:var(--gold);line-height:1.5}
+.unconf::before{content:"⚠ Unconfirmed: ";font-weight:600}
+
+/* ── SECTION CARD ── */
+.scard{background:white;border:1px solid var(--border);border-radius:var(--rad);padding:1.1rem 1.3rem;margin-bottom:.9rem}
+.scard h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.65rem;color:var(--ink)}
+.scard-eye{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.25rem}
+.flabel{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.3rem;display:block;margin-top:.55rem}
+.fnote{font-size:.78rem;color:var(--ink-faint);font-style:italic;margin-top:.25rem;line-height:1.5}
+
+/* ── ROLE TAG ── */
+.rtag{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-bottom:.6rem}
+.rt-hawk{background:#fef0c0;color:#7a4a00}
+.rt-dove{background:#d8f5d8;color:#1a4a1a}
+.rt-dip{background:#d8e8fc;color:#0d2860}
+.rt-hard{background:#fce0e0;color:#6a1010}
+.rt-prag{background:#fef0c0;color:#7a4a00}
+.rt-cuba{background:#eeddf8;color:#4a1070}
+
+/* ── TEXTAREAS ── */
+textarea{width:100%;border:1px solid var(--border);border-radius:4px;padding:.65rem .75rem;font-family:'Source Serif 4',serif;font-size:.9rem;font-weight:400;color:var(--ink);background:var(--paper);resize:vertical;line-height:1.65;min-height:80px;outline:none;transition:border-color .2s}
+textarea:focus{border-color:var(--ink-light)}
+textarea::placeholder{color:#b0a090}
+
+/* ── DECISION GRID ── */
+.dec-section{margin-bottom:.9rem}
+.dec-section-title{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:.5rem .75rem;border-radius:var(--rad) var(--rad) 0 0;margin-bottom:0}
+.dec-title-us{background:var(--us);color:white}
+.dec-title-ussr{background:var(--ussr);color:white}
+.dec-title-locked-us{background:#4a6a8a;color:#ccdaee}
+.dec-title-locked-ussr{background:#7a3030;color:#eedada}
+.dec-opts{display:flex;flex-direction:column;gap:7px;padding:.75rem;background:white;border:1px solid var(--border);border-top:none;border-radius:0 0 var(--rad) var(--rad)}
+
+/* ── DECISION OPTION CARD ── */
+.dec-opt{display:flex;align-items:flex-start;gap:11px;padding:.75rem .9rem;border:2px solid var(--border);border-radius:var(--rad);cursor:pointer;transition:all .15s;background:white}
+.dec-opt:hover:not(.locked-opt):not(.confirmed-opt){border-color:var(--ink-light)}
+.dec-opt.sel-us{border-color:var(--us);background:var(--us-light)}
+.dec-opt.sel-ussr{border-color:var(--ussr);background:var(--ussr-light)}
+.dec-opt input[type=radio]{margin-top:3px;flex-shrink:0;accent-color:var(--us)}
+.dec-opt.ussr-r input[type=radio]{accent-color:var(--ussr)}
+.dec-lbl{font-size:.88rem;line-height:1.55;color:var(--ink-mid)}
+.dec-lbl strong{color:var(--ink);font-weight:600}
+
+/* Locked options — other side's choices, display only until confirmed */
+.locked-opt{opacity:.55;cursor:default;background:#f8f8f8;border-color:#ddd}
+.locked-opt:hover{border-color:#ddd}
+.lock-icon{font-size:.8rem;margin-right:4px;color:#aaa}
+
+/* Confirmed option — what you heard them choose */
+.confirmed-opt{border-color:var(--gold);background:var(--gold-faint);cursor:default;opacity:1}
+.confirmed-opt .dec-lbl strong{color:var(--gold)}
+.conf-badge{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:white;padding:1px 6px;border-radius:8px;margin-left:8px;vertical-align:middle}
+
+/* Pending confirm — selectable to record what you heard */
+.pending-opt{opacity:.85;cursor:pointer;background:#fefef5;border-color:#cca820}
+.pending-opt:hover{border-color:var(--gold);background:var(--gold-faint);opacity:1}
+
+/* ── LOCKED OVERLAY NOTE ── */
+.locked-note{background:#f5f5f5;border:1px dashed #bbb;border-radius:var(--rad);padding:.75rem 1rem;font-size:.84rem;color:#666;text-align:center;margin-bottom:.6rem;line-height:1.5}
+.locked-note strong{color:#444}
+
+/* ── SITUATION REPORT ── */
+.sit-rep{background:#080808;border-radius:var(--rad);padding:1.3rem 1.5rem;margin-bottom:1rem;color:#ede8dc}
+.sit-rep-title{font-family:'Playfair Display',serif;font-size:1rem;color:#c8a840;margin-bottom:.8rem}
+.sit-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:.9rem}
+.sit-cell{border-radius:4px;padding:.75rem .9rem}
+.sit-us-cell{background:#0d1e30;border:1px solid #1e3a5a}
+.sit-ussr-cell{background:#1e0808;border:1px solid #3a1010}
+.sit-cell-lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.3rem}
+.sit-us-cell .sit-cell-lbl{color:#7aadde}
+.sit-ussr-cell .sit-cell-lbl{color:#de8a8a}
+.sit-cell-val{font-size:.88rem;color:#ede8dc;line-height:1.55}
+.sit-outcome{border-radius:4px;padding:.8rem .9rem;font-size:.9rem;line-height:1.7}
+.sit-good{background:#081808;border:1px solid #2a5a2a;color:#90d090}
+.sit-bad{background:#180808;border:1px solid #5a1818;color:#e09090}
+.sit-neu{background:#0a0a18;border:1px solid #2a2a4a;color:#a0a0d0}
+.sit-esc{text-align:center;font-size:.76rem;color:#666;margin-top:.6rem}
+
+/* ── WAITING BOX ── */
+.wait-box{text-align:center;padding:1.5rem;background:var(--paper-dark);border:1px solid var(--border);border-radius:var(--rad);margin:.8rem 0}
+.wait-box p{color:var(--ink-mid);font-size:.88rem}
+
+/* ── CONSEQUENCE CARD ── */
+.con-card{border-radius:var(--rad);padding:1.2rem 1.4rem;margin-bottom:.9rem;border:1px solid}
+.con-good{background:var(--good-bg);border-color:var(--good-bdr)}
+.con-bad{background:var(--bad-bg);border-color:var(--bad-bdr)}
+.con-neu{background:var(--neu-bg);border-color:var(--neu-bdr)}
+.con-crit{background:#060000;border-color:#5a0808;color:#ede8dc}
+.con-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+.con-good .con-title{color:var(--good-txt)}
+.con-bad .con-title{color:var(--bad-txt)}
+.con-neu .con-title{color:var(--neu-txt)}
+.con-crit .con-title{color:#de8a8a}
+.con-body{font-size:.9rem;line-height:1.72}
+.con-good .con-body{color:#1e4a1e}
+.con-bad .con-body{color:#4a1010}
+.con-neu .con-body{color:#22224a}
+.con-crit .con-body{color:#bbb}
+
+/* ── ARKHIPOV ── */
+.ark-card{background:#060000;border:2px solid #5a0808;border-radius:var(--rad);padding:1.3rem 1.5rem;color:#ede8dc;margin-bottom:.9rem}
+.ark-hdr{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:#de5050;margin-bottom:.5rem;font-weight:600}
+.ark-body{font-size:.88rem;line-height:1.75;color:#aaa;margin-bottom:.9rem}
+.ark-choices{display:flex;flex-direction:column;gap:8px}
+.ark-btn{padding:.65rem .9rem;border-radius:5px;border:2px solid;font-family:'Source Serif 4',serif;font-size:.88rem;cursor:pointer;font-weight:600;transition:all .2s;text-align:left}
+.ark-yes{border-color:#5a0808;background:#180000;color:#ede8dc}
+.ark-yes:hover{background:#260000}
+.ark-no{border-color:#183018;background:#060c06;color:#ede8dc}
+.ark-no:hover{background:#0e1a0e}
+
+/* ── BACKGROUND PAGE ── */
+.bg-page{background:white;border:1px solid var(--border);border-radius:var(--rad);overflow:hidden;margin-bottom:1rem}
+.bg-hdr{background:#080808;color:#ede8dc;padding:1.4rem 1.6rem}
+.bg-hdr-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.bg-hdr-sub{font-size:.8rem;color:#888}
+.bg-body{padding:1.4rem 1.6rem}
+.bg-sec{margin-bottom:1.2rem}
+.bg-sec-title{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-light);font-weight:600;margin-bottom:.5rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
+.bg-sec p{font-size:.92rem;color:var(--ink-mid);line-height:1.75;margin-bottom:.5rem}
+.bg-sec p:last-child{margin-bottom:0}
+.bg-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:.5rem}
+.bg-fact{background:var(--paper);border:1px solid var(--border);border-radius:4px;padding:.75rem .9rem}
+.bg-fact-lbl{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.3rem}
+.bg-fact-val{font-size:.88rem;color:var(--ink-mid);line-height:1.6}
+.bg-tension{background:var(--paper-dark);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:.65rem .9rem;margin:.4rem 0;font-size:.88rem;color:var(--ink-mid);line-height:1.65}
+
+/* ── BUTTONS ── */
+.sbtn{display:block;width:100%;padding:.82rem;border:none;border-radius:7px;font-family:'Source Serif 4',serif;font-size:.93rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.03em;margin-top:.4rem}
+.sbtn-us{background:var(--us);color:white}
+.sbtn-us:hover{background:var(--us-mid)}
+.sbtn-ussr{background:var(--ussr);color:white}
+.sbtn-ussr:hover{background:var(--ussr-mid)}
+.sbtn-neu{background:#1a1a1a;color:#ede8dc}
+.sbtn-neu:hover{background:#2a2a2a}
+.sbtn:disabled{opacity:.35;cursor:not-allowed}
+.next-btn{background:#1a1a1a;color:#ede8dc;border:none;border-radius:7px;padding:.78rem 1.4rem;font-family:'Source Serif 4',serif;font-size:.9rem;font-weight:600;cursor:pointer;transition:opacity .2s;width:100%;margin-top:.8rem}
+.next-btn:hover{opacity:.85}
+
+/* ── DEBRIEF ── */
+.deb-hdr{background:#080808;color:#ede8dc;padding:1.8rem 1.5rem;text-align:center}
+.deb-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.deb-sub{font-size:.8rem;color:#666}
+.deb-body{padding:1.4rem;max-width:900px;margin:0 auto}
+.deb-q{background:white;border:1px solid var(--border);border-radius:var(--rad);padding:1.1rem 1.3rem;margin-bottom:.9rem}
+.deb-qnum{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:.25rem}
+.deb-qtext{font-family:'Playfair Display',serif;font-style:italic;font-size:.98rem;margin-bottom:.65rem;line-height:1.55;color:var(--ink)}
+.save-btn{background:#1a1a1a;color:#ede8dc;border:none;border-radius:7px;padding:.8rem 1.8rem;font-family:'Source Serif 4',serif;font-size:.93rem;font-weight:600;cursor:pointer;transition:opacity .2s;display:block;margin:1.4rem auto 0}
+.save-btn:hover{opacity:.85}
+
+/* ── PRINT ── */
+@media print{
+  body{background:white;font-size:10.5pt}
+  .sim-hdr,.sbtn,.next-btn,.save-btn,.setup-btn{display:none!important}
+  .screen{display:block!important;min-height:unset}
+  #printView{display:block!important}
+  .pg-break{page-break-before:always}
+  textarea,.pta{border:1px solid #bbb!important;min-height:unset!important;height:auto!important;overflow:visible!important;white-space:pre-wrap!important;word-wrap:break-word!important;resize:none!important;background:white!important}
+  .intel,.scard,.con-card,.deb-q,.sit-rep,.bg-sec{break-inside:avoid;page-break-inside:avoid}
+}
+
+/* ── PRINT VIEW ── */
+#printView{display:none;padding:1rem;max-width:800px;margin:0 auto;font-family:'Source Serif 4',Georgia,serif}
+.pt-hdr{text-align:center;border-bottom:2px solid #222;padding-bottom:.9rem;margin-bottom:1.4rem}
+.pt-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#111}
+.pt-meta{font-size:.8rem;color:#555;margin-top:.25rem}
+.pt-sec{margin-bottom:1.4rem}
+.pt-sec-title{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;border-bottom:1px solid #333;padding-bottom:.25rem;margin-bottom:.65rem;color:#111}
+.pt-lbl{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:.15rem;margin-top:.5rem}
+.pta{width:100%;border:1px solid #bbb;border-radius:3px;padding:.45rem .6rem;font-family:'Source Serif 4',Georgia,serif;font-size:.85rem;min-height:48px;white-space:pre-wrap;word-wrap:break-word;margin-bottom:.6rem;background:#fafafa;color:#111;line-height:1.6}
+.pt-dec{background:#f5f5f5;border:1px solid #ccc;border-radius:3px;padding:.4rem .65rem;font-size:.85rem;margin-bottom:.4rem;color:#111}
+
+@media(max-width:600px){
+  .img-pair{grid-template-columns:1fr}
+  .bg-grid{grid-template-columns:1fr}
+  .sit-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ SETUP ════ -->
+<div class="screen active" id="setupScreen">
+  <div class="setup-card">
+    <div class="setup-eyebrow">U.S. History · Cold War Unit</div>
+    <div class="setup-title">Cuban Missile Crisis</div>
+    <div class="setup-subtitle">October 16–28, 1962 · Thirteen Days</div>
+    <div class="sf">
+      <label>Your Name</label>
+      <input type="text" id="sName" placeholder="First and last name">
+    </div>
+    <div class="sf">
+      <label>Select Your Team</label>
+      <div class="team-grid">
+        <div class="team-opt" id="tUS" onclick="selTeam('US')">
+          <div class="team-flag">🇺🇸</div>
+          <div class="team-name">United States</div>
+          <div style="font-size:.66rem;color:#444;margin-top:3px">ExComm · Kennedy's advisors</div>
+        </div>
+        <div class="team-opt" id="tUSSR" onclick="selTeam('USSR')">
+          <div class="team-flag">☭</div>
+          <div class="team-name">Soviet Union</div>
+          <div style="font-size:.66rem;color:#444;margin-top:3px">Presidium · Khrushchev's circle</div>
+        </div>
+      </div>
+    </div>
+    <div class="sf" id="roleField" style="display:none">
+      <label>Your Role</label>
+      <select id="roleSelect" onchange="updRole()">
+        <option value="">— select your role —</option>
+      </select>
+      <div class="role-desc-box" id="roleDesc"></div>
+    </div>
+    <button class="setup-btn" onclick="startSim()">Enter the Situation Room</button>
+  </div>
+</div>
+
+<!-- ════ SIM SCREEN ════ -->
+<div class="screen" id="simScreen">
+  <div class="sim-hdr">
+    <div class="hdr-left">
+      <div class="hdr-title">Cuban Missile Crisis · Oct. 1962</div>
+      <div class="stag" id="stag"></div>
+    </div>
+    <div class="hdr-right">
+      <div class="pips" id="pips"></div>
+      <div class="esc-wrap">
+        <div class="esc-lbl">Escalation</div>
+        <div class="esc-bar"><div class="esc-fill" id="escFill"></div></div>
+        <div class="esc-num" id="escNum"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sim-body" id="simBody"></div>
+</div>
+
+<!-- ════ PRINT VIEW ════ -->
+<div id="printView"></div>
+
+<script>
+// ══════════════════════════════════════════
+// ROLES
+// ══════════════════════════════════════════
+const ROLES={
+  US:[
+    {id:'hawk',label:'Gen. Curtis LeMay — Joint Chiefs (Hawk)',short:'Hawk',cls:'rt-hawk',
+     desc:'You believe the Soviets only understand force. Air strikes now, before the missiles become operational. Every hour of delay is a gift to Khrushchev. You have no patience for blockades or back channels.'},
+    {id:'dove',label:'Robert F. Kennedy — Attorney General (Dove)',short:'Dove',cls:'rt-dove',
+     desc:'Your brother is President. A first strike makes the U.S. the aggressor — another Pearl Harbor, but America is Japan. Push hard for the blockade and back-channel negotiation. You believe there is a deal to be made.'},
+    {id:'diplomat',label:'Dean Rusk — Secretary of State (Diplomat)',short:'Diplomat',cls:'rt-dip',
+     desc:'Every decision ripples through NATO, Latin America, and the UN. You are always asking: how does this look to the world? Alliances take decades to build and one bad decision to destroy.'}
+  ],
+  USSR:[
+    {id:'hardliner',label:'Marshal Malinovsky — Defense Minister (Hardliner)',short:'Hardliner',cls:'rt-hard',
+     desc:'The missiles in Cuba are legitimate. The Americans have Jupiters in Turkey pointed at Moscow. You will not blink first. Any sign of weakness will be exploited. Challenge the quarantine.'},
+    {id:'pragmatist',label:'Nikita Khrushchev — Premier (Pragmatist)',short:'Pragmatist',cls:'rt-prag',
+     desc:'You put the missiles there for two reasons: protect Cuba from another American invasion, and force a deal on Turkey. You don\'t want nuclear war — you want leverage. There is a deal here if the Americans are willing.'},
+    {id:'cuba',label:'Anastas Mikoyan — Cuba Liaison',short:'Cuba Advisor',cls:'rt-cuba',
+     desc:'You know Castro better than anyone in Moscow. Cuba will not accept being traded away. Soviet credibility across the developing world — Africa, Asia, Latin America — depends on how this ends.'}
+  ]
+};
+
+// ══════════════════════════════════════════
+// ROUND DATA
+// ══════════════════════════════════════════
+const ROUNDS=[
+{
+  id:1,title:'Day 1 — The Discovery',date:'October 16, 1962',acting:'US',
+  images:{
+    acting:[
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/U2_photo_of_San_Cristobal_missile_site.jpg/800px-U2_photo_of_San_Cristobal_missile_site.jpg',cap:'CIA U-2 photograph of the San Cristóbal missile site, Cuba · October 14, 1962'},
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Cuba_crisis_1962.png/800px-Cuba_crisis_1962.png',cap:'Map showing Cuba\'s proximity to the United States — 90 miles from Florida'}
+    ],
+    reacting:[
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Cuba_crisis_1962.png/800px-Cuba_crisis_1962.png',cap:'Strategic position: Cuba, the Caribbean, and Soviet missile range'}
+    ]
+  },
+  actingIntel:`<p>At 8:45 AM this morning, CIA analysts confirmed what U-2 surveillance photographs show: Soviet SS-4 medium-range ballistic missile launch sites are under construction in Cuba — 90 miles from Florida. The missiles are <strong>not yet operational.</strong> CIA estimates 10–14 days until they could be armed and ready to fire.</p>
+<p>President Kennedy has convened ExComm in total secrecy. The American public does not know. The Soviets do not know we know. <strong>This window of secrecy may be the most important strategic asset we have right now.</strong></p>
+<p>Soviet Ambassador Dobrynin met with the Secretary of State last week and explicitly denied any offensive missiles were going to Cuba. He lied directly to our faces.</p>
+<div class="unconf">A small number of CIA analysts believe some sites may be decoys designed to provoke an overreaction and draw attention away from other Soviet actions. This is a minority view not supported by the photographic evidence, but it cannot be entirely dismissed.</div>`,
+  reactingIntel:`<p>Soviet intelligence in Washington is reporting unusual activity at the State Department and CIA. U.S. naval movements in the Atlantic have increased sharply in the past 48 hours. U-2 reconnaissance flights over Cuba have intensified to near-daily frequency.</p>
+<p><strong>Assessment:</strong> The Americans have almost certainly discovered the missile sites. Construction is ongoing — the missiles are not yet operational, but could be within 10–14 days. Khrushchev's original calculation — that the missiles would be operational before the Americans found them — has failed.</p>
+<p>We must decide how to respond before the Americans announce their move. Every hour we wait, their options expand and ours narrow.</p>
+<div class="unconf">Our Washington contact reports Kennedy may have already decided on military action and is only waiting for a pretext. This is unconfirmed and may reflect panic rather than intelligence — but cannot be ignored.</div>`,
+  actingOptions:[
+    {id:'A',label:'Immediate air strikes on all missile sites',desc:'Launch surgical air strikes to destroy the sites before the missiles become operational. Inform NATO allies after the fact. The threat must be eliminated now.'},
+    {id:'B',label:'Naval quarantine (blockade)',desc:'Announce a naval quarantine of Cuba — no Soviet ships carrying military equipment may enter. Buy time for diplomacy while demonstrating resolve without firing the first shot.'},
+    {id:'C',label:'Private ultimatum to Khrushchev first',desc:'Send a direct back-channel message: the missiles must go. Give him 48 hours to respond before any public action. Preserve the option for a quiet resolution that avoids public humiliation on either side.'},
+    {id:'D',label:'Continue surveillance, do not act yet',desc:'The missiles aren\'t operational yet. Wait for more intelligence and more options before committing. Acting on incomplete information could start a war by accident.'}
+  ],
+  reactingOptions:[
+    {id:'A',label:'Accelerate missile installation — work around the clock',desc:'Push construction crews into round-the-clock shifts. Get the missiles operational before the Americans can act. Once operational, the situation changes entirely in our favor.'},
+    {id:'B',label:'Send a quiet diplomatic signal to Washington',desc:'Have Ambassador Dobrynin contact Robert Kennedy through the back channel. Signal willingness to discuss — without publicly acknowledging the missiles exist.'},
+    {id:'C',label:'Hold position — wait to see what the Americans do',desc:'Make no changes. Observe Kennedy\'s response before committing to any course of action. We do not yet know what they have decided.'},
+    {id:'D',label:'Put Soviet Atlantic naval forces on heightened readiness',desc:'Alert submarines and surface ships in the Atlantic. Let the Americans know through action, not words, that the Soviet Union is prepared for whatever they are planning.'}
+  ],
+  anticipateQ:'Before your team submits, answer: what do you expect the other side to do in response? List at least two possible responses and what consequences each would produce.'
+},
+{
+  id:2,title:'Day 4 — The Quarantine Line',date:'October 24, 1962',acting:'US',
+  images:{
+    acting:[
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Cuban_Missile_Crisis_-_US_Navy_vessels.jpg/800px-Cuban_Missile_Crisis_-_US_Navy_vessels.jpg',cap:'U.S. Navy quarantine line map — Soviet ships approaching from the northeast, October 1962'}
+    ],
+    reacting:[
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Soviet_ship_Bucharest.jpg/800px-Soviet_ship_Bucharest.jpg',cap:'Soviet cargo ship Bucharest approaching the quarantine line, October 1962'}
+    ]
+  },
+  actingIntel:`<p>Kennedy announced the naval quarantine publicly on October 22nd. The world now knows. Soviet ships — some almost certainly carrying military equipment — are approaching the quarantine line in the Atlantic.</p>
+<p>At 10:25 AM, some Soviet ships have stopped dead in the water. Others are still moving toward the line. <strong>The Soviet cargo ship <em>Bucharest</em> is approaching — it appears to carry oil, not weapons.</strong></p>
+<p>Secretary McNamara reports that a Soviet submarine is in the area. Standard Navy procedure for forcing a submarine to surface involves dropping practice depth charges — small explosive devices used as a signal, not an attack.</p>
+<div class="unconf">Some intelligence suggests the Soviet submarine may be armed with nuclear torpedoes and may have standing orders to fire if attacked. Standard Soviet doctrine requires explicit Kremlin approval for nuclear use — but this submarine has reportedly lost communication with Moscow.</div>`,
+  reactingIntel:`<p>Kennedy's quarantine has been announced publicly. Soviet ships carrying military equipment have been ordered to stop or turn back. The cargo ship <em>Bucharest</em> — carrying oil, not weapons — is approaching the quarantine line.</p>
+<p>Submarine B-59 is operating in the quarantine zone. It has been running deep to avoid detection and has <strong>lost reliable communication with Moscow.</strong> The crew is under significant stress — heat exceeding 110°F, rising CO2 levels, no news from home about whether war has started.</p>
+<p>Khrushchev has received Kennedy's letter but has not yet responded publicly. A decision must be made about the Bucharest — and about B-59.</p>
+<div class="unconf">Our submarine commanders may interpret U.S. anti-submarine depth charge activity as a hostile attack rather than a signal. Their standing orders in such a scenario are unclear from Moscow's current position — communications are unreliable.</div>`,
+  actingOptions:[
+    {id:'A',label:'Stop and board all Soviet ships crossing the line',desc:'The quarantine is real or it isn\'t. Board every ship that crosses, regardless of cargo. Show the Soviets the line means something.'},
+    {id:'B',label:'Allow the Bucharest through — it only carries oil',desc:'Let civilian cargo ships pass. Stop only ships carrying military equipment. Avoid a confrontation over petroleum that serves no strategic purpose.'},
+    {id:'C',label:'Pause enforcement — give Soviets 24 more hours',desc:'The quarantine is declared but enforcement can wait. Give Khrushchev one more day to respond diplomatically before the first confrontation at sea.'},
+    {id:'D',label:'Fire warning shots near the Bucharest',desc:'Demonstrate the quarantine is real without boarding. Warning shots close to the ship send the message while avoiding an actual boarding incident.'}
+  ],
+  reactingOptions:[
+    {id:'A',label:'Order the Bucharest to cross the line',desc:'It carries only oil. Order it to cross and force the Americans to stop a civilian ship in front of the world. Call their bluff publicly.'},
+    {id:'B',label:'Turn the Bucharest around',desc:'Avoid a confrontation at sea. Turn back the ship. This is not retreat — it is gaining time while Khrushchev considers his full diplomatic response.'},
+    {id:'C',label:'Order submarine B-59 to surface voluntarily',desc:'A voluntary surfacing is a gesture of transparency that reduces the risk of an accidental at-sea encounter and opens a direct channel.'},
+    {id:'D',label:'Maintain radio silence — B-59 operates on standing orders',desc:'B-59 has standing orders. The U.S. anti-submarine activity is their choice. What happens next is a consequence of their aggression, not ours.'}
+  ],
+  anticipateQ:'Before submitting your response, identify: what do you expect the other side to do next, and what are the most dangerous possible consequences of each option?'
+},
+{
+  id:3,title:'Day 11 — Two Letters from Khrushchev',date:'October 26–27, 1962',acting:'USSR',
+  images:{
+    acting:[
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Cuban_Missile_Crisis_-_photograph_of_ExCom.jpg/800px-Cuban_Missile_Crisis_-_photograph_of_ExCom.jpg',cap:'ExComm meeting in the Cabinet Room, White House, October 1962 — Kennedy is visible at center'}
+    ],
+    reacting:[
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/John_F._Kennedy_-_NARA_-_194603.jpg/800px-John_F._Kennedy_-_NARA_-_194603.jpg',cap:'President Kennedy receiving intelligence cables during the Cuban Missile Crisis, October 1962'}
+    ]
+  },
+  actingIntel:`<p>Khrushchev has drafted two letters to Kennedy. You must decide which one represents the official Soviet position.</p>
+<p><strong>Letter One (October 26):</strong> Long, emotional, almost personal. Offers to remove the missiles from Cuba in exchange only for a U.S. pledge not to invade Cuba. The tone is conciliatory — Khrushchev writes that he does not want to "pull the rope of war tighter."</p>
+<p><strong>Letter Two (October 27, morning):</strong> Harder in tone. Adds a new public demand: the United States must also remove its Jupiter missiles from Turkey in exchange for Soviet missile removal from Cuba. The Jupiters are aimed at Soviet cities — this demand is publicly defensible.</p>
+<div class="unconf">Some Presidium members believe the Turkey demand will be read by Kennedy as Soviet weakness — that we are now bargaining instead of standing firm. This view is contested, but it is held by influential voices.</div><div style="background:#f9f5ec;border:1px solid #c8b870;border-radius:6px;padding:1.1rem 1.3rem;margin:.8rem 0;font-family:'Source Serif 4',Georgia,serif">
+<div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#7a5c00;margin-bottom:.6rem;font-weight:600">Primary Source — Letter One · October 26, 1962 (Khrushchev to Kennedy)</div>
+<p style="font-size:.88rem;line-height:1.8;color:#2a2010;margin-bottom:.7rem"><em>"I have received your letter of October 25. I have read it, and am answering you. You are disturbed over Cuba. You say that this disturbs you because it is ninety miles by sea from the coast of the United States of America. But Turkey adjoins us — our sentries patrol back and forth and see each other."</em></p>
+<p style="font-size:.88rem;line-height:1.8;color:#2a2010;margin-bottom:.7rem"><em>"If you are really concerned about the peace and welfare of your people — and this is your duty as President — then I, as Chairman of the Council of Ministers, am concerned for my people. Moreover, the Soviet people are not at all willing to experience the horrors of war. We want peace."</em></p>
+<p style="font-size:.88rem;line-height:1.8;color:#2a2010"><em>"Let us therefore display statesmanlike wisdom. I propose: we, for our part, will declare that our ships bound for Cuba are not carrying any armaments. You will declare that the United States will not invade Cuba with its troops and will not support any other forces which might intend to invade Cuba. Then the necessity for the presence of our military specialists in Cuba will disappear."</em></p>
+<div style="font-size:.72rem;color:#9a7a20;margin-top:.75rem;font-style:italic">Tone: conciliatory, personal, emotional. Single demand: U.S. no-invasion pledge.</div>
+</div><div style="background:#f5f0f0;border:1px solid #c87070;border-radius:6px;padding:1.1rem 1.3rem;margin:.8rem 0;font-family:'Source Serif 4',Georgia,serif">
+<div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#7a1010;margin-bottom:.6rem;font-weight:600">Primary Source — Letter Two · October 27, 1962 (Khrushchev to Kennedy)</div>
+<p style="font-size:.88rem;line-height:1.8;color:#2a1010;margin-bottom:.7rem"><em>"You are disturbed over Cuba. You say that this disturbs you because it is ninety miles from the coast of the United States. But Turkey is next to us. Our sentinels are pacing and watching each other."</em></p>
+<p style="font-size:.88rem;line-height:1.8;color:#2a1010;margin-bottom:.7rem"><em>"I therefore make this proposal: We agree to remove those weapons from Cuba which you regard as offensive weapons. We agree to this and to state this commitment in the United Nations. Your representatives will make a statement to the effect that the United States, on its part, bearing in mind the anxiety and concern of the Soviet state, will evacuate its analogous weapons from Turkey."</em></p>
+<p style="font-size:.88rem;line-height:1.8;color:#2a1010"><em>"The Soviet Union will pledge not to invade or interfere with the affairs of Turkey; the United States will pledge not to invade or interfere with the affairs of Cuba. Why then not to make use of these good offices of the Secretary General of the United Nations, U Thant?"</em></p>
+<div style="font-size:.72rem;color:#c04040;margin-top:.75rem;font-style:italic">Tone: harder, more formal. New demand: U.S. must also remove Jupiter missiles from Turkey.</div>
+</div><div style="background:#fef8e8;border:1px dashed #c8a820;border-radius:4px;padding:.65rem .9rem;margin:.6rem 0;font-size:.83rem;color:#7a5c00;line-height:1.6">
+<strong>⚠ Critical uncertainty:</strong> You cannot be certain which letter represents the actual Soviet position. Letter One was sent first. Letter Two came later — diplomatic protocol says respond to the most recent. But some in ExComm believe Letter Two was pushed by hardliners, not Khrushchev himself. Letter One may reflect what Khrushchev actually wants. You must decide which to treat as real.
+</div>`,
+  reactingIntel:`<p>Khrushchev has sent two contradictory letters. The first (October 26) offers missile removal for a no-invasion pledge only. The second (October 27) adds a new public demand: U.S. Jupiter missiles must come out of Turkey.</p>
+<p>ExComm is divided. The second letter is the most recent official Soviet position — diplomatic protocol requires responding to it. But Robert Kennedy has proposed a different approach.</p>
+<p><strong>RFK's argument:</strong> Respond only to Letter One. Treat it as the operative Soviet offer. Accept the terms publicly. Handle Turkey separately and privately through a back channel. Ignore the second letter entirely in your public response.</p>
+<div class="unconf">Intelligence suggests the Turkey demand in Letter Two was pushed by Soviet hardliners rather than Khrushchev personally, who may privately prefer the simpler Letter One terms. This is unconfirmed — it may be what we want to believe rather than what is true.</div><div style="background:#f9f5ec;border:1px solid #c8b870;border-radius:6px;padding:1.1rem 1.3rem;margin:.8rem 0;font-family:'Source Serif 4',Georgia,serif">
+<div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#7a5c00;margin-bottom:.6rem;font-weight:600">Primary Source — Letter One · October 26, 1962 (Khrushchev to Kennedy)</div>
+<p style="font-size:.88rem;line-height:1.8;color:#2a2010;margin-bottom:.7rem"><em>"I have received your letter of October 25. I have read it, and am answering you. You are disturbed over Cuba. You say that this disturbs you because it is ninety miles by sea from the coast of the United States of America. But Turkey adjoins us — our sentries patrol back and forth and see each other."</em></p>
+<p style="font-size:.88rem;line-height:1.8;color:#2a2010;margin-bottom:.7rem"><em>"If you are really concerned about the peace and welfare of your people — and this is your duty as President — then I, as Chairman of the Council of Ministers, am concerned for my people. Moreover, the Soviet people are not at all willing to experience the horrors of war. We want peace."</em></p>
+<p style="font-size:.88rem;line-height:1.8;color:#2a2010"><em>"Let us therefore display statesmanlike wisdom. I propose: we, for our part, will declare that our ships bound for Cuba are not carrying any armaments. You will declare that the United States will not invade Cuba with its troops and will not support any other forces which might intend to invade Cuba. Then the necessity for the presence of our military specialists in Cuba will disappear."</em></p>
+<div style="font-size:.72rem;color:#9a7a20;margin-top:.75rem;font-style:italic">Tone: conciliatory, personal, emotional. Single demand: U.S. no-invasion pledge.</div>
+</div><div style="background:#f5f0f0;border:1px solid #c87070;border-radius:6px;padding:1.1rem 1.3rem;margin:.8rem 0;font-family:'Source Serif 4',Georgia,serif">
+<div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#7a1010;margin-bottom:.6rem;font-weight:600">Primary Source — Letter Two · October 27, 1962 (Khrushchev to Kennedy)</div>
+<p style="font-size:.88rem;line-height:1.8;color:#2a1010;margin-bottom:.7rem"><em>"You are disturbed over Cuba. You say that this disturbs you because it is ninety miles from the coast of the United States. But Turkey is next to us. Our sentinels are pacing and watching each other."</em></p>
+<p style="font-size:.88rem;line-height:1.8;color:#2a1010;margin-bottom:.7rem"><em>"I therefore make this proposal: We agree to remove those weapons from Cuba which you regard as offensive weapons. We agree to this and to state this commitment in the United Nations. Your representatives will make a statement to the effect that the United States, on its part, bearing in mind the anxiety and concern of the Soviet state, will evacuate its analogous weapons from Turkey."</em></p>
+<p style="font-size:.88rem;line-height:1.8;color:#2a1010"><em>"The Soviet Union will pledge not to invade or interfere with the affairs of Turkey; the United States will pledge not to invade or interfere with the affairs of Cuba. Why then not to make use of these good offices of the Secretary General of the United Nations, U Thant?"</em></p>
+<div style="font-size:.72rem;color:#c04040;margin-top:.75rem;font-style:italic">Tone: harder, more formal. New demand: U.S. must also remove Jupiter missiles from Turkey.</div>
+</div><div style="background:#fef8e8;border:1px dashed #c8a820;border-radius:4px;padding:.65rem .9rem;margin:.6rem 0;font-size:.83rem;color:#7a5c00;line-height:1.6">
+<strong>⚠ Critical uncertainty:</strong> You cannot be certain which letter represents the actual Soviet position. Letter One was sent first. Letter Two came later — diplomatic protocol says respond to the most recent. But some in ExComm believe Letter Two was pushed by hardliners, not Khrushchev himself. Letter One may reflect what Khrushchev actually wants. You must decide which to treat as real.
+</div>`,
+  actingOptions:[
+    {id:'A',label:'Stand firm on Letter Two — Cuba deal AND Turkey deal',desc:'The Jupiter missiles in Turkey are aimed at Moscow. This reciprocal demand is publicly defensible. Both withdrawals must be part of any agreement.'},
+    {id:'B',label:'Withdraw Letter Two — offer only the terms of Letter One',desc:'The Turkey demand makes everything impossible for Kennedy to accept publicly. Withdraw it. Offer only the no-invasion pledge for missile removal.'},
+    {id:'C',label:'Take the Turkey demand public at the United Nations',desc:'Bring the demand to the UN Security Council. Force Kennedy to respond publicly in front of the world. International pressure changes the calculation.'},
+    {id:'D',label:'Issue a harder third letter — full U.S. withdrawal from Caribbean',desc:'Letters One and Two were too conciliatory. Issue a third, harder position. The Soviet Union will not be pressured by an American naval display.'}
+  ],
+  reactingOptions:[
+    {id:'A',label:'Respond to Letter Two — negotiate privately on Turkey',desc:'The Turkey demand is not unreasonable — the Jupiters are obsolete anyway. Open secret negotiations: missiles out of Cuba, Jupiters out of Turkey within 6 months, kept quiet.'},
+    {id:'B',label:'Respond to Letter One only — ignore Turkey (RFK\'s gambit)',desc:'Treat Letter One as the operative Soviet offer. Accept publicly: no-invasion pledge for missile removal. Do not acknowledge Turkey in the public response. Handle it separately.'},
+    {id:'C',label:'Reject both letters — demand immediate unconditional removal',desc:'The U.S. will not negotiate the removal of missiles that should never have been placed there. Unconditional removal first. Discussion of terms afterward.'},
+    {id:'D',label:'Take the question to the UN Security Council',desc:'Let U Thant mediate. Remove the direct superpower confrontation from center stage and build international pressure while both sides gain time.'}
+  ],
+  anticipateQ:'Before submitting, identify: how do you expect the other side to respond to each possible decision? Which of their possible responses would be most dangerous to your position?'
+},
+{
+  id:4,title:'Day 12 — The U-2 is Shot Down',date:'October 27, 1962',acting:'USSR',
+  images:{
+    acting:[
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Rudolf_Anderson.jpg/400px-Rudolf_Anderson.jpg',cap:'Major Rudolf Anderson, USAF — killed when his U-2 was shot down over Cuba, October 27, 1962'},
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/U-2_wreckage_in_Cuba.jpg/800px-U-2_wreckage_in_Cuba.jpg',cap:'Wreckage of Major Anderson\'s U-2 aircraft, Cuba — displayed publicly by the Cuban government'}
+    ],
+    reacting:[
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Rudolf_Anderson.jpg/400px-Rudolf_Anderson.jpg',cap:'Major Rudolf Anderson — the first American combat casualty of the Cuban Missile Crisis'}
+    ]
+  },
+  actingIntel:`<p>A U.S. U-2 reconnaissance aircraft flying over Cuba has been shot down by a Soviet SA-2 surface-to-air missile battery. The American pilot, Major Rudolf Anderson, is dead.</p>
+<p><strong>Moscow did not order this.</strong> Cuban anti-aircraft crews — under nominal Soviet command — fired the missiles without authorization from Khrushchev. Castro had been pressuring Soviet local commanders to respond to U.S. overflights for days.</p>
+<p>The Americans do not yet know that Moscow didn't order it. They know only that a Soviet missile system killed an American military pilot over Cuba.</p>
+<div class="unconf">Our assessment is that Kennedy faces overwhelming pressure from the Joint Chiefs to retaliate militarily within 24 hours. This is a reasonable assessment — but Kennedy has surprised us before. He may have more room than we think to hold his military back.</div>`,
+  reactingIntel:`<p>Major Rudolf Anderson's U-2 has been shot down over Cuba. He is dead. The Joint Chiefs are in the room with the President right now. General LeMay is arguing this is exactly what he predicted — Soviet forces have fired on an American military aircraft in international airspace. Military protocol calls for immediate retaliatory air strikes on the missile batteries that fired.</p>
+<p>Kennedy has approximately 24 hours before the military pressure becomes impossible to resist politically and institutionally.</p>
+<div class="unconf">A minority assessment within the CIA suggests the shoot-down was ordered by Cuban commanders independently, not the Soviet Presidium — that Khrushchev may not have authorized this action. This would change the calculus significantly. But the consensus view is that any Soviet military equipment in Cuba operates under Kremlin authority, and the distinction may not matter politically.</div>`,
+  actingOptions:[
+    {id:'A',label:'Claim responsibility — warn that further overflights will be met with force',desc:'If Moscow doesn\'t claim it, Cuba gets credit and the Soviets appear unable to control their own forces. Take responsibility. Make clear the quarantine zone is defended.'},
+    {id:'B',label:'Deny Soviet involvement — explain Cuban forces acted without orders',desc:'Tell Kennedy the truth: Moscow did not authorize this action. Cuban forces acted independently. This should not trigger a Soviet-American military exchange.'},
+    {id:'C',label:'Say nothing — make no statement',desc:'Any statement carries risk. Silence lets Kennedy draw his own conclusions and forces him to make the next move without Soviet direction.'},
+    {id:'D',label:'Use the shoot-down as bargaining leverage',desc:'The incident has handed the Soviets a powerful position. Offer to prevent further incidents in exchange for ending the quarantine and beginning negotiations.'}
+  ],
+  reactingOptions:[
+    {id:'A',label:'Authorize retaliatory air strikes on the missile batteries',desc:'An American is dead. Soviet forces shot him down. Military protocol is clear. Strike the batteries that fired within 24 hours.'},
+    {id:'B',label:'Do not retaliate — absorb the incident and continue negotiations',desc:'Retaliating could spiral into full war. Anderson died in service of intelligence-gathering, not combat. Hold. Continue the diplomatic track.'},
+    {id:'C',label:'Demand an immediate explanation from Moscow before acting',desc:'Give the Soviets 12 hours to explain the shoot-down. An honest answer might change everything — and buys critical time.'},
+    {id:'D',label:'Suspend U-2 flights and call for immediate talks',desc:'Overflights were provocative. Suspend them unilaterally. Signal the desire to negotiate immediately. De-escalate without making a formal concession.'}
+  ],
+  anticipateQ:'Before submitting, identify: what response from the other side would most escalate the crisis toward war? What response would most open a path toward de-escalation?'
+},
+{
+  id:5,title:'The Arkhipov Moment',date:'October 27, 1962',acting:'ARKHIPOV',
+  images:{acting:[],reacting:[]},
+  actingIntel:'',reactingIntel:'',
+  actingOptions:[],reactingOptions:[],
+  anticipateQ:''
+},
+{
+  id:6,title:'Day 13 — The Back-Channel Deal',date:'October 28, 1962',acting:'US',
+  images:{
+    acting:[
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/JFK_and_RFK_1963.jpg/800px-JFK_and_RFK_1963.jpg',cap:'President Kennedy and Attorney General Robert Kennedy — RFK was Kennedy\'s most trusted advisor and conducted the back-channel negotiations with Soviet Ambassador Dobrynin'}
+    ],
+    reacting:[
+      {url:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/JFK_and_RFK_1963.jpg/800px-JFK_and_RFK_1963.jpg',cap:'Robert Kennedy met secretly with Soviet Ambassador Anatoly Dobrynin on the night of October 27, 1962'}
+    ]
+  },
+  actingIntel:`<p>Robert Kennedy met with Soviet Ambassador Anatoly Dobrynin last night. A framework exists.</p>
+<p><strong>Public terms:</strong> The Soviet Union removes its missiles from Cuba. The United States publicly pledges not to invade Cuba.</p>
+<p><strong>Private terms:</strong> The United States will remove its Jupiter missiles from Turkey within six months. <strong>This part of the deal must never be made public.</strong> If it leaks, the deal collapses and Kennedy looks like he negotiated under duress.</p>
+<p>This is the offer. If Kennedy rejects it, there may not be another — and the military has a strike plan ready to execute within 24 hours.</p>
+<div class="unconf">Several hawks in ExComm believe Khrushchev will accept a deal even without the Turkey commitment if the U.S. holds firm — that he is more desperate than he appears. This view is not supported by what Dobrynin communicated privately, but it is held with conviction by significant voices in the room.</div>`,
+  reactingIntel:`<p>Robert Kennedy met with Dobrynin last night. The Americans have offered to remove the Jupiter missiles from Turkey — privately, within six months — in exchange for Soviet missile removal from Cuba and a U.S. no-invasion pledge.</p>
+<p>This is more than Khrushchev's first letter asked for. It is a genuine American concession.</p>
+<p><strong>The problem:</strong> Accepting this deal means removing the missiles from Cuban soil without a public commitment from the United States that the world can see. The Soviet military will read this as capitulation. Castro will feel abandoned. And the Turkey commitment, being secret, cannot be shown to anyone as evidence of Soviet success.</p>
+<div class="unconf">Our Havana contact reports Castro is furious and may take unilateral military action — possibly against the U.S. naval base at Guantanamo — if the missiles are removed without his formal agreement. This may be bluster, but Castro has surprised us before.</div>`,
+  actingOptions:[
+    {id:'A',label:'Accept the full deal — public pledge plus private Turkey commitment',desc:'This ends the crisis. The Jupiters are obsolete anyway and already scheduled for review. Accept, keep the Turkey part quiet, and declare it a victory for American resolve.'},
+    {id:'B',label:'Accept the public terms only — no Turkey commitment',desc:'The U.S. will not make secret commitments under duress. Accept the no-invasion pledge in exchange for missile removal, but take Turkey entirely off the table.'},
+    {id:'C',label:'Accept but require UN verification of Soviet missile removal first',desc:'Before committing to anything, require verified Soviet missile removal under UN supervision. Trust but verify — publicly and verifiably.'},
+    {id:'D',label:'Reject the deal — issue a final ultimatum and prepare strikes',desc:'Thirteen days is enough. The missiles must come out unconditionally and immediately. Issue a final 24-hour ultimatum and execute the military option.'}
+  ],
+  reactingOptions:[
+    {id:'A',label:'Accept the deal — missiles out, Turkey commitment kept private',desc:'This is a genuine win: Cuba protected from invasion, the Jupiter missiles coming out, the crisis ending. Accept.'},
+    {id:'B',label:'Accept missile removal but demand Turkey be made public',desc:'The Soviet people and military need to see a tangible achievement. The Turkey commitment must be acknowledged publicly or it has no political value at home.'},
+    {id:'C',label:'Reject the deal — demand a formal public treaty with verification',desc:'A back-channel promise from the Attorney General is not sufficient. Demand a formal, verifiable, publicly acknowledged agreement.'},
+    {id:'D',label:'Accept the deal but require Castro\'s agreement first',desc:'Removing missiles from Cuban soil without Cuba\'s formal consent destroys Soviet credibility across the developing world. Castro must agree.'}
+  ],
+  anticipateQ:'Before submitting, identify: what is the best-case outcome if the other side accepts your terms? What is the worst-case outcome if they refuse?'
+}
+];
+
+// ══════════════════════════════════════════
+// CONSEQUENCES (acting decision + reacting decision)
+// ══════════════════════════════════════════
+const CONS={
+  1:{'A-A':{t:'U.S. air strikes hit the sites while Soviet crews are still working. 28 Soviet personnel are killed. Khrushchev announces this is an act of war. Soviet submarines in the Atlantic receive authorization for nuclear torpedoes if attacked.',e:9,c:'bad'},'A-B':{t:'U.S. launches strikes. A Soviet diplomatic signal reaches American officials hours later — too late. The bombs are already falling. Khrushchev\'s conciliatory back channel becomes irrelevant. Soviet hardliners seize control of the response.',e:9,c:'bad'},'A-C':{t:'U.S. strikes with no warning while the Soviets hold position waiting for the American move. No back channel existed. The world watches as both superpowers move toward direct military confrontation.',e:9,c:'bad'},'A-D':{t:'U.S. strikes. Soviet submarines, now on combat readiness and cut off from Moscow, detect the attack. One submarine captain requests nuclear torpedo authorization from his three-officer committee.',e:8,c:'bad'},'B-A':{t:'Kennedy announces a quarantine. Soviet construction crews race to finish the sites. A cargo ship loaded with missiles approaches the quarantine line. Both sides have committed to positions. The world holds its breath.',e:7,c:'neu'},'B-B':{t:'Kennedy announces a quarantine. Simultaneously, a quiet Soviet diplomatic signal reaches the White House — Khrushchev wants a private channel. A potential path toward resolution exists, narrow but real.',e:5,c:'good'},'B-C':{t:'Kennedy announces a quarantine. The Soviets hold position with no dramatic response. Soviet ships continue toward the quarantine line. Neither side has blinked.',e:7,c:'neu'},'B-D':{t:'Kennedy announces a quarantine. Soviet submarines are positioned near the quarantine line on heightened alert. U.S. destroyers begin tracking them. An encounter at sea becomes increasingly likely.',e:7,c:'neu'},'C-A':{t:'U.S. sends a private ultimatum. Soviet crews accelerate construction. Khrushchev reads the quiet signal as hesitation — the Americans are blinking. He pushes harder.',e:8,c:'bad'},'C-B':{t:'U.S. sends a private warning. Soviets send a quiet diplomatic signal back. A tentative back channel opens. No public commitment exists on either side — the crisis is live, but a thread of communication exists.',e:5,c:'good'},'C-C':{t:'Both sides watch in silence. Intelligence agencies on both sides are working overtime. The missiles move closer to operational every hour. The window for non-military solutions narrows.',e:7,c:'neu'},'C-D':{t:'U.S. sends a quiet warning while Soviet naval forces quietly mobilize. Soviet commanders interpret the naval activity as preparation for invasion. Tensions rise on both sides simultaneously.',e:8,c:'neu'},'D-A':{t:'The U.S. waits. Soviet crews complete installation of the first operational missile — now pointed at Washington. ExComm is alarmed. The window for air strikes has narrowed dramatically.',e:8,c:'bad'},'D-B':{t:'The U.S. waits. Soviets send a quiet diplomatic overture. Kennedy reads this as an opening — but the missiles are closer to operational every hour.',e:6,c:'neu'},'D-C':{t:'Both sides wait. Nothing happens. Missiles continue being installed. Intelligence estimates three days until the first site is fully operational. The window is closing.',e:7,c:'neu'},'D-D':{t:'Both sides wait. Soviet ships continue toward Cuba. Missiles continue being installed. The situation grows increasingly unstable with no path to resolution visible on either side.',e:7,c:'neu'}},
+  2:{'A-A':{t:'U.S. moves to board the Bucharest. It crosses the line. American sailors attempt to board; Soviet sailors physically resist. A confrontation erupts at sea. Submarine B-59, in the area, receives sonar signals its commander interprets as the start of hostilities.',e:9,c:'bad'},'A-B':{t:'The Bucharest turns back. U.S. forces prepare to board the next ship in line — which carries military equipment. The Soviets have blinked once. The confrontation is not over but the immediate crisis has been avoided.',e:6,c:'neu'},'A-C':{t:'A Soviet submarine surfaces voluntarily near the quarantine line. U.S. destroyers immediately surround it. The submarine commander, now in contact with fleet command, receives new orders: hold position. An uneasy standoff, but communication is open.',e:5,c:'good'},'A-D':{t:'U.S. insists on boarding. Submarine B-59 is operating on standing orders. U.S. anti-submarine depth charges are increasingly aggressive. The submarine captain concludes he is under attack.',e:9,c:'bad'},'B-A':{t:'The U.S. lets the Bucharest pass. Soviets read this as weakness and order the next ship — carrying military equipment — to follow. More ships follow. The quarantine\'s credibility is collapsing.',e:8,c:'bad'},'B-B':{t:'The U.S. allows the oil ship through. The Soviets turn the Bucharest around voluntarily. Both sides have avoided a direct confrontation at sea. The quarantine holds without incident. A small but real moment of de-escalation.',e:4,c:'good'},'B-C':{t:'The U.S. lets the oil ship pass. A Soviet submarine surfaces nearby — a voluntary gesture of transparency. Back-channel conversations begin cautiously.',e:4,c:'good'},'B-D':{t:'U.S. lets the oil ship pass. Submarine B-59 remains submerged on standing orders near a U.S. destroyer. U.S. anti-submarine forces drop practice depth charges to force surfacing. The submarine commander does not know if this is an attack.',e:8,c:'bad'},'C-A':{t:'U.S. pauses enforcement. Soviets immediately order the Bucharest to cross. More ships follow. The quarantine has effectively been broken before negotiations have even begun.',e:9,c:'bad'},'C-B':{t:'U.S. pauses. Soviets turn back their ships. Both sides gain time. The missiles remain in Cuba, but the immediate crisis at sea has been avoided. Kennedy and Khrushchev have a window.',e:5,c:'good'},'C-C':{t:'U.S. pauses. Soviets surface a submarine. A tense but stable standoff develops. Neither side has escalated. Both sides are watching each other very carefully.',e:5,c:'neu'},'C-D':{t:'U.S. pauses. Submarine B-59 remains on standing orders in radio silence. U.S. destroyers continue tracking it. Without communication, both sides are operating on assumptions — the most dangerous condition in the crisis.',e:8,c:'bad'},'D-A':{t:'Warning shots fired near the Bucharest. It crosses the line anyway. The Soviet crew radios Moscow: the Americans fired on us. Khrushchev\'s hardliners gain significant ground.',e:8,c:'bad'},'D-B':{t:'Warning shots fired. The Bucharest turns back. Soviet leadership reads the warning as firm but measured — not an attack. Khrushchev begins drafting a conciliatory response.',e:5,c:'good'},'D-C':{t:'Warning shots fired. A Soviet submarine surfaces nearby — possibly as a de-escalation gesture, possibly interpreting the shots as hostility. U.S. commanders are uncertain. Tense standoff at sea.',e:6,c:'neu'},'D-D':{t:'Warning shots fired. Submarine B-59, on standing orders and cut off from Moscow, detects the activity as a potential attack. The captain calls a meeting of his three-officer nuclear authorization committee. One vote could determine whether civilization survives this night.',e:9,c:'bad'}},
+  3:{'A-A':{t:'Both sides acknowledge Turkey as part of the framework. Secret negotiations begin. Kennedy privately commits: Jupiters out of Turkey within 6 months, quietly. The deal framework exists — but it must remain secret or domestic politics will destroy it on both sides.',e:3,c:'good'},'A-B':{t:'Soviets hold firm on Turkey. U.S. responds to the soft letter only, ignoring Turkey publicly. Khrushchev reads this as bad faith. Soviet hardliners gain influence in the Presidium.',e:7,c:'neu'},'A-C':{t:'Soviets demand Turkey. U.S. demands unconditional removal. Public standoff with no face-saving exit for either leader. NATO allies are alarmed. The UN is scrambling.',e:8,c:'bad'},'A-D':{t:'Turkey demand made. U.S. takes to UN. U Thant proposes a temporary freeze. Both sides agree to pause while he mediates. The missiles remain in Cuba.',e:5,c:'neu'},'B-A':{t:'Soviets withdraw Turkey demand. U.S. engages on Turkey privately anyway. Khrushchev is surprised — Kennedy is offering more than he asked for in Letter One. A resolution is coming into view.',e:3,c:'good'},'B-B':{t:'Soviets offer a clean deal. U.S. responds to the soft letter only. Both sides are aligned on the basic framework. Robert Kennedy meets Dobrynin privately tonight. The deal is close.',e:2,c:'good'},'B-C':{t:'Soviets offer clean deal. U.S. demands unconditional removal. Khrushchev extended an olive branch and it was rejected. Soviet hardliners argue this proves the Americans want humiliation, not resolution.',e:8,c:'bad'},'B-D':{t:'Soviets offer clean deal. U.S. takes to UN. Negotiations slow but remain open. Both sides are still talking.',e:5,c:'neu'},'C-A':{t:'Soviets make Turkey demand public. U.S. negotiates Turkey privately. Public pressure is enormous — NATO allies demand consultation, West Germany is alarmed. The deal becomes politically toxic even as it progresses.',e:7,c:'neu'},'C-B':{t:'Soviets make Turkey demand public. U.S. responds to soft letter, ignoring Turkey publicly. The contradiction is visible to the world. Kennedy appears to be ignoring a reasonable reciprocal offer.',e:7,c:'neu'},'C-C':{t:'Full public standoff. Both sides at maximum public demands with no face-saving exit. UN Security Council in emergency session. The situation is at maximum danger.',e:9,c:'bad'},'C-D':{t:'Soviets make Turkey demand public. U.S. takes to UN. Both sides arguing through a third party while the missiles remain operational in Cuba.',e:6,c:'neu'},'D-A':{t:'Soviet position hardens maximally. U.S. offers to negotiate on Turkey. But Soviet demands have become so extreme that the American offer feels like a trap to Presidium hardliners.',e:8,c:'bad'},'D-B':{t:'Soviets harden. U.S. responds to an earlier conciliatory signal and ignores the hard position. Neither side knows what the other actually wants. Dangerous confusion at the highest levels.',e:7,c:'neu'},'D-C':{t:'Both sides hardened to maximalist positions. No negotiating room remains. Military options are now the primary topic in both capitals.',e:9,c:'bad'},'D-D':{t:'Soviets harden. U.S. takes to UN. The UN process cannot move fast enough. Missiles are operational and military pressure on Kennedy is overwhelming.',e:8,c:'bad'}},
+  4:{'A-A':{t:'Soviets claim responsibility. Americans retaliate with air strikes on the missile batteries. Soviet forces in Cuba return fire. Three Americans are killed. Kennedy convenes a war council. The Joint Chiefs are unanimous: this is war.',e:10,c:'bad'},'A-B':{t:'Soviets claim responsibility. Kennedy, under enormous military pressure, chooses not to retaliate. His restraint is extraordinary. But the situation is at maximum tension — the next incident may trigger automatic escalation.',e:8,c:'neu'},'A-C':{t:'Soviets claim responsibility. Kennedy demands an explanation. The Soviet answer — we did it and we will do it again — removes any remaining path to negotiation.',e:9,c:'bad'},'A-D':{t:'Soviets claim responsibility but offer a deal. Kennedy reads this as cynical maneuvering over an American\'s death. Any remaining goodwill is gone.',e:8,c:'bad'},'B-A':{t:'Soviets deny involvement. Americans retaliate anyway. Air strikes hit the batteries. A Soviet technician is killed. Khrushchev sends an emergency message: this is the edge of the abyss.',e:9,c:'bad'},'B-B':{t:'Soviets explain Cuban forces acted without orders. Kennedy chooses to believe it — or acts as if he does. He tells ExComm: "We are not going to war over a miscommunication." The path to negotiation reopens.',e:4,c:'good'},'B-C':{t:'Soviets deny ordering it. Kennedy demands clarification. The explanation — Cuban commanders acted independently — cannot be fully verified but buys critical hours.',e:5,c:'neu'},'B-D':{t:'Soviets deny involvement. Kennedy suspends U-2 flights and calls for talks. Moscow reads this as a significant concession. Khrushchev has room to offer a deal.',e:3,c:'good'},'C-A':{t:'Soviets say nothing. Americans strike. Silence reads as confirmation. Strikes hit four battery sites. Soviet forces in Cuba go to full combat readiness.',e:9,c:'bad'},'C-B':{t:'Soviets silent. Kennedy holds and doesn\'t retaliate. The silence is agonizing but Kennedy reads it as an opening — if the Soviets wanted war they would have said so. RFK meets Dobrynin tonight.',e:5,c:'neu'},'C-C':{t:'Neither side speaks. Absolute maximum tension. Deep below the Atlantic, submarine B-59 has just received practice depth charges from U.S. destroyers.',e:9,c:'bad'},'C-D':{t:'Soviets silent. U.S. suspends overflights and calls for talks. The unilateral American concession after an American\'s death is remarkable. Moscow reads it as Kennedy genuinely wanting an exit.',e:4,c:'good'},'D-A':{t:'Soviets try to use the shoot-down as bargaining leverage. Americans retaliate. Bargaining over an American\'s death infuriates Kennedy. All remaining goodwill is gone.',e:9,c:'bad'},'D-B':{t:'Soviets offer a deal. Kennedy absorbs the incident without retaliation. Soviet flexibility and American restraint in the same moment — the most significant diplomatic opening of the entire crisis.',e:3,c:'good'},'D-C':{t:'Soviets offer a deal. Kennedy demands an explanation first. The Soviet offer remains on the table while both sides communicate. A framework may be possible.',e:5,c:'neu'},'D-D':{t:'Soviets offer a deal. Kennedy suspends U-2 flights. Both sides have made unilateral concessions simultaneously. For the first time in 12 days, the direction is clearly toward resolution.',e:2,c:'good'}},
+  6:{'A-A':{t:'The deal is done. Soviet missiles leave Cuba under UN inspection. The U.S. pledges not to invade. The Jupiter missiles come quietly out of Turkey six months later — the world never learns of that part. Kennedy is celebrated. Khrushchev is seen in the West as having blinked — but he kept his country out of nuclear war, protected Cuba from invasion, and got Turkey. The Cuban Missile Crisis is over.',e:1,c:'good'},'A-B':{t:'U.S. accepts privately. Soviets make the Turkey deal public. Kennedy is furious — it looks like he traded American security commitments for the removal of missiles that should never have been placed there. Domestic political damage is severe. But the crisis ends.',e:3,c:'neu'},'A-C':{t:'U.S. offers full deal. Soviets demand a formal public treaty. Negotiations extend three more days while lawyers draft language. Missiles remain in Cuba during this time.',e:5,c:'neu'},'A-D':{t:'U.S. accepts the full deal. Soviets require Castro\'s agreement. Castro refuses — he never wanted the missiles removed; they were Cuba\'s deterrent against invasion. The deal collapses. Both superpowers face a Cuban veto.',e:7,c:'bad'},'B-A':{t:'U.S. refuses Turkey commitment. Soviets accept the deal anyway. Khrushchev calculates that the no-invasion pledge alone justifies missile removal. Crisis ends — but Khrushchev\'s domestic standing collapses. He is removed from power in 1964, partly because he "gave away" the Cuba advantage.',e:3,c:'neu'},'B-B':{t:'U.S. refuses Turkey. Soviets demand it be made public. Complete impasse. Neither side has a face-saving exit. Military options return to the table.',e:8,c:'bad'},'B-C':{t:'U.S. refuses Turkey. Soviets demand formal treaty. Negotiations collapse. The crisis continues.',e:8,c:'bad'},'B-D':{t:'U.S. refuses Turkey. Soviets require Castro\'s agreement. Castro demands guarantees the U.S. won\'t give. Three-way deadlock.',e:7,c:'bad'},'C-A':{t:'U.S. requires UN verification first. Soviets accept. U Thant oversees missile removal. Turkey deal happens quietly afterward. Crisis resolved through multilateral framework — slower but verifiable and durable.',e:2,c:'good'},'C-B':{t:'U.S. requires verification. Soviets demand Turkey be made public. Kennedy refuses public humiliation. The deal falls apart over who gets credit for ending it.',e:7,c:'bad'},'C-C':{t:'Both sides demand verification and formal treaties. Lawyers drafting on both sides. Missiles remain in Cuba for another week. Eventually resolved — slowly.',e:4,c:'neu'},'C-D':{t:'U.S. demands UN inspection. Soviets require Castro\'s agreement. Castro refuses inspection. Three-way deadlock.',e:7,c:'bad'},'D-A':{t:'U.S. prepares military action. Soviets unilaterally announce missile removal before strikes begin. Kennedy is stunned — they capitulated without the Turkey commitment. He calls off the strikes. Crisis ends, but Kennedy is left wondering what just happened.',e:4,c:'neu'},'D-B':{t:'U.S. prepares strikes. Soviets demand Turkey be made public before removing missiles. Kennedy refuses. Air strikes hit missile sites. Soviet technicians are killed. Khrushchev authorizes military response.',e:10,c:'bad'},'D-C':{t:'U.S. prepares strikes. Soviets demand a formal treaty. Kennedy\'s final ultimatum: 24 hours. No diplomatic channel is open on either side.',e:10,c:'bad'},'D-D':{t:'U.S. strikes Cuba. The Soviet Union authorizes full military response. Nuclear weapons are authorized for use by both sides. The simulation cannot continue from here.',e:10,c:'bad'}}
+};
+// ══════════════════════════════════════════
+// BRANCHING INTEL BRIEFINGS
+// Returns the correct briefing based on prior round decisions
+// ══════════════════════════════════════════
+
+function getPrevDecs(roundId){
+  // Returns {act, react, esc} for the round before roundId
+  const prev = roundId - 1;
+  if(prev < 1) return {act:'', react:'', esc:6};
+  return {
+    act: gr('r'+prev+'_act_dec'),
+    react: gr('r'+prev+'_react_dec'),
+    esc: S.esc
+  };
+}
+
+function getActingIntel(rd){
+  if(rd.id === 1) return rd.actingIntel;
+  var prev = getPrevDecs(rd.id);
+  var act = prev.act, react = prev.react;
+  var B = BRANCHING_INTEL[rd.id];
+  if(!B) return rd.actingIntel;
+  var ba = B.acting;
+  if(!ba) return rd.actingIntel;
+  if(ba[act] && ba[act][react]) return ba[act][react];
+  if(ba[act] && ba[act]['*'])   return ba[act]['*'];
+  if(ba['*']  && ba['*'][react]) return ba['*'][react];
+  if(ba['*']  && ba['*']['*'])   return ba['*']['*'];
+  return rd.actingIntel;
+}
+
+function getReactingIntel(rd){
+  if(rd.id === 1) return rd.reactingIntel;
+  var prev = getPrevDecs(rd.id);
+  var act = prev.act, react = prev.react;
+  var B = BRANCHING_INTEL[rd.id];
+  if(!B) return rd.reactingIntel;
+  var br = B.reacting;
+  if(!br) return rd.reactingIntel;
+  if(br[act] && br[act][react]) return br[act][react];
+  if(br[act] && br[act]['*'])   return br[act]['*'];
+  if(br['*']  && br['*'][react]) return br['*'][react];
+  if(br['*']  && br['*']['*'])   return br['*']['*'];
+  return rd.reactingIntel;
+}
+
+// ── ROUND 2 BRANCHING ────────────────────────────────────
+// Branches on Round 1 US decision (act) and Soviet response (react)
+// Round 1 acting = US, so 'act' = US choice, 'react' = Soviet choice
+
+const BRANCHING_INTEL = {
+
+2: {
+  acting: {
+    // US chose air strikes (A)
+    'A': {
+      // Soviets accelerated (A) — worst case
+      'A': `<p>Air strikes hit four Soviet missile sites yesterday. Soviet construction crews were still on-site. <strong>28 Soviet personnel are confirmed dead.</strong> Khrushchev has broadcast to the world that this is an act of war by the United States.</p>
+<p>Soviet ships in the Atlantic have received new orders — we don't know what they are. Soviet nuclear forces have gone to an elevated alert status. The Pentagon is reporting that Soviet submarines in the Atlantic have cut radio communication with Moscow.</p>
+<p>Kennedy is under pressure from the Joint Chiefs to follow the air strikes with a full naval blockade and ground invasion plan. The UN Security Council is in emergency session. Every NATO ally has called Washington in the past 12 hours.</p>
+<div class="unconf">CIA assessment: Soviet submarines in the quarantine zone may have standing authorization to use nuclear torpedoes if they believe they are under attack. This is unconfirmed but cannot be dismissed given the current radio silence.</div>`,
+
+      // Soviets sent diplomatic signal (B)
+      'B': `<p>Air strikes hit Soviet missile sites yesterday. Soviet construction crews were on-site — casualties are reported but numbers are unconfirmed. The strikes have destroyed at least two launch pads.</p>
+<p>Remarkably, a quiet Soviet diplomatic signal reached the White House overnight — sent before the strikes landed, apparently, through the Dobrynin back channel. The message indicates willingness to discuss. But it was sent before the strikes. Whether it still stands is unknown.</p>
+<p>Soviet forces have not yet responded militarily. The window may still be open — but it is closing fast. Kennedy has 24 hours before Soviet military pressure on Khrushchev becomes overwhelming.</p>
+<div class="unconf">Unconfirmed: Khrushchev's hardliners are arguing the diplomatic signal should be withdrawn. Whether Khrushchev has the political standing to resist them after an American first strike is unclear.</div>`,
+
+      // Soviets held position (C)
+      'C': `<p>Air strikes hit Soviet missile sites yesterday. Soviet construction crews were on-site. Casualties are being reported. The strikes destroyed two sites; two others may still be partially operational.</p>
+<p>The Soviet Union has made no public statement and no military response — yet. The silence is being read in different ways by different ExComm members. Some see it as paralysis. Others see it as the calm before a massive escalation.</p>
+<p>Soviet ships in the Atlantic have not changed course. Soviet military forces are at elevated readiness but have not moved aggressively. The world is watching and waiting.</p>
+<div class="unconf">NSA intercepts suggest Soviet military commanders are awaiting orders from Moscow that have not yet been given. This could mean Khrushchev is still deciding — or that the decision has already been made and is being implemented quietly.</div>`,
+
+      // Soviets put naval forces on alert (D)
+      'D': `<p>Air strikes hit Soviet missile sites yesterday. Soviet construction crews were on-site — casualties confirmed. At the same time, Soviet naval forces in the Atlantic went to combat readiness. The timing suggests the Soviets anticipated the strikes.</p>
+<p>Soviet submarines are now in the quarantine zone on combat alert. U.S. destroyers are tracking at least three of them. The submarines have cut radio communication with Moscow. Their standing orders in the event of an attack are unknown.</p>
+<p>The situation at sea is now the most dangerous element of the crisis. The strikes may have eliminated the missile threat — but they have created a naval confrontation that could escalate beyond anyone's control.</p>
+<div class="unconf">One U.S. destroyer captain has reported that a Soviet submarine appears to be maneuvering into a firing position. This is unconfirmed and may be a navigation pattern rather than a weapons posture.</div>`,
+
+      // Fallback for any other Soviet response
+      '*': `<p>U.S. air strikes hit Soviet missile sites yesterday. The situation is at maximum danger. Soviet personnel were killed. The world is watching for Khrushchev's response.</p>
+<p>Kennedy must now decide whether to follow the strikes with additional military action or whether to leave a door open for Soviet de-escalation. Every hour without a Soviet response increases the uncertainty.</p>
+<div class="unconf">CIA cannot confirm whether the remaining missile sites are still operational. Incomplete damage assessment means the military situation is unclear.</div>`
+    },
+
+    // US chose blockade (B) — historical path
+    'B': {
+      '*': `<p>Kennedy announced the naval quarantine publicly on October 22nd. The world now knows. Soviet ships — some almost certainly carrying military equipment — are approaching the quarantine line in the Atlantic.</p>
+<p>At 10:25 AM, some Soviet ships have stopped dead in the water. Others are still moving toward the line. <strong>The Soviet cargo ship <em>Bucharest</em> is approaching — it appears to carry oil, not weapons.</strong></p>
+<p>Secretary McNamara reports that a Soviet submarine is in the area. Standard Navy procedure for forcing a submarine to surface involves dropping practice depth charges — small explosive devices used as a signal, not an attack.</p>
+<div class="unconf">Some intelligence suggests the Soviet submarine may be armed with nuclear torpedoes and may have standing orders to fire if attacked. Standard Soviet doctrine requires explicit Kremlin approval for nuclear use — but this submarine has reportedly lost communication with Moscow.</div>`
+    },
+
+    // US chose private ultimatum (C)
+    'C': {
+      // Soviets accelerated missiles (A)
+      'A': `<p>The U.S. sent a private ultimatum to Khrushchev 48 hours ago. His response: Soviet construction crews have gone to round-the-clock shifts. The missiles may be operational within days.</p>
+<p>Khrushchev has not acknowledged the ultimatum publicly. The silence is either strategic — buying time while missiles are completed — or he is preparing a response. CIA cannot tell which.</p>
+<p>The American public still does not know about the missiles. Congress does not know. NATO allies do not know. The window for acting without public pressure is closing fast. Every day that passes, the missiles get closer to operational.</p>
+<div class="unconf">Some analysts believe Khrushchev's acceleration is a bluff — that he wants to force a deal before military options dominate. This interpretation is not supported by the construction data.</div>`,
+
+      // Soviets sent diplomatic signal (B)
+      'B': `<p>The U.S. sent a private ultimatum to Khrushchev. He has responded — not publicly, but through Dobrynin. The message: the Soviet Union is willing to discuss, but will not be dictated to. The missiles are there, the Americans know it, and Khrushchev wants to negotiate, not capitulate.</p>
+<p>This is the most promising diplomatic opening of the crisis so far. A deal may be possible. But the missiles are still being installed — every day of negotiation is a day closer to operational status.</p>
+<p>Kennedy must decide: engage the back channel seriously, or treat the response as stalling and escalate publicly?</p>
+<div class="unconf">Dobrynin's message may reflect Khrushchev's personal position rather than the Presidium consensus. Soviet hardliners may not have authorized this signal.</div>`,
+
+      // Soviets held (C) or naval alert (D)
+      '*': `<p>The U.S. sent a private ultimatum to Khrushchev 48 hours ago. No public response has been received. Missile construction continues. The window for a quiet resolution is narrowing.</p>
+<p>Kennedy must now decide whether to escalate publicly — announcing the missiles to the world and demanding removal — or to give the private channel more time. Both options carry significant risks.</p>
+<div class="unconf">CIA cannot confirm whether Khrushchev has received the ultimatum or whether it has been intercepted by Soviet intelligence before reaching him personally.</div>`
+    },
+
+    // US chose to wait (D)
+    'D': {
+      // Soviets accelerated (A) — worst outcome for waiting
+      'A': `<p>The U.S. chose to continue surveillance and wait for more information. Soviet construction crews used that time well. <strong>CIA now assesses that the first missile site may be fully operational within 48-72 hours.</strong> Once operational, the missiles can reach Washington in 13 minutes.</p>
+<p>The window for air strikes that destroy non-operational missiles is closing. Once the missiles are armed, any strike risks triggering a launch. ExComm is now debating whether the moment for military options has already passed.</p>
+<p>Soviet ships continue toward Cuba carrying additional equipment. The delay has strengthened the Soviet position significantly.</p>
+<div class="unconf">Joint Chiefs assessment: if we wait another 48 hours, surgical air strikes become too dangerous to execute without risking a nuclear response. This assessment is contested by the State Department.</div>`,
+
+      // Soviets sent diplomatic signal (B)
+      'B': `<p>The U.S. chose to continue surveillance while the Soviets quietly sent a diplomatic signal to Washington. Dobrynin reached out to RFK with an indication that Khrushchev is open to discussion — if the Americans are not planning military action.</p>
+<p>This is an unexpected opening. The delay in U.S. action may have been read by the Soviets as restraint rather than hesitation. A back channel may be viable. But the missiles continue to be installed.</p>
+<p>Kennedy must now decide whether to respond to the Soviet signal or to escalate publicly before the missiles become operational.</p>
+<div class="unconf">The Soviet signal may be a stalling tactic — buying time to complete installation while negotiations create cover. CIA assesses this as a real risk.</div>`,
+
+      '*': `<p>The U.S. chose to wait and gather more intelligence. The situation has deteriorated in the meantime. Soviet missile installation continues. One site may now be partially operational. The public does not know. Congress does not know. The Joint Chiefs are in the room with the President, and they are not patient men.</p>
+<p>Kennedy's options are narrowing. The longer he waits, the more dangerous a military strike becomes — and the more political pressure builds for action.</p>
+<div class="unconf">NSA intercepts suggest Soviet technicians are working around the clock. A CIA analyst estimates the first missile could be armed within 96 hours. This estimate has not been verified independently.</div>`
+    }
+  },
+
+  // REACTING team (USSR) briefings for Round 2
+  // Branches on Round 1 US decision (act) and Soviet response (react)
+  reacting: {
+    // US chose air strikes
+    'A': {
+      'A': `<p>The Americans struck our missile sites yesterday. Soviet construction crews were working — 28 are confirmed dead. Khrushchev has broadcast that this is an act of war. Soviet naval forces are at combat readiness.</p>
+<p>Our submarines in the Atlantic have cut radio communication with Moscow — standard protocol under combat conditions. Their standing orders are in effect. The American destroyers are tracking them.</p>
+<p>The Presidium is meeting now. Khrushchev faces a choice: respond militarily and risk nuclear war, or absorb the strike and negotiate from a position of perceived weakness. Hardliners are demanding retaliation.</p>
+<div class="unconf">One submarine commander has reportedly requested authorization for nuclear torpedo use. Moscow has not responded. Whether this is because of radio silence or deliberate choice is unknown.</div>`,
+
+      '*': `<p>The Americans struck our missile sites. Soviet personnel are dead. Khrushchev is under pressure from the military to retaliate. The question before the Presidium is whether to match American military action or to find a path to negotiation that preserves Soviet dignity.</p>
+<p>The Soviet Union's response in the next 24 hours will determine whether this remains a crisis or becomes a war.</p>
+<div class="unconf">Our Washington intelligence suggests Kennedy is also under pressure from his military. Both leaders may be fighting their own hawks simultaneously.</div>`
+    },
+
+    // US chose blockade (B) — historical path
+    'B': {
+      '*': `<p>Kennedy's quarantine has been announced publicly. Soviet ships carrying military equipment have been ordered to stop or turn back. The cargo ship <em>Bucharest</em> — carrying oil, not weapons — is approaching the quarantine line.</p>
+<p>Submarine B-59 is operating in the quarantine zone. It has been running deep to avoid detection and has <strong>lost reliable communication with Moscow.</strong> The crew is under significant stress — heat exceeding 110°F, rising CO2 levels, no news from home about whether war has started.</p>
+<p>Khrushchev has received Kennedy's letter but has not yet responded publicly. A decision must be made about the Bucharest — and about B-59.</p>
+<div class="unconf">Our submarine commanders may interpret U.S. anti-submarine depth charge activity as a hostile attack rather than a signal. Their standing orders in such a scenario are unclear from Moscow's current position.</div>`
+    },
+
+    // US chose private ultimatum (C)
+    'C': {
+      'B': `<p>The Americans sent a private ultimatum demanding missile removal. Khrushchev received it and responded through Dobrynin — indicating willingness to discuss. The Americans have not yet responded to that signal.</p>
+<p>The Presidium is divided. Hardliners argue that the private ultimatum shows Kennedy is too weak to act publicly — that our position is stronger than we thought. Others argue the back channel is the best available path to a deal that preserves Soviet interests.</p>
+<p>Missile installation continues. Time works in our favor — but only if the Americans continue to hesitate.</p>
+<div class="unconf">Dobrynin reports Kennedy may be preparing a public announcement regardless of the back channel. If he goes public before we respond, the diplomatic track closes.</div>`,
+
+      '*': `<p>The Americans sent a private ultimatum. Khrushchev must decide how to respond — or whether to respond at all. The missile installation continues. The strategic question is whether to engage the back channel or to let the missiles reach operational status before negotiating from a position of strength.</p>
+<div class="unconf">CIA assessment (from our Washington source): Kennedy is under growing pressure to go public. If he does, the back channel closes and military options dominate the American discussion.</div>`
+    },
+
+    // US waited (D)
+    'D': {
+      'A': `<p>The Americans chose to wait. We used the time to accelerate installation. One site may be operational within 48-72 hours. The strategic calculation is working in our favor — operational missiles change the entire negotiating position.</p>
+<p>But Khrushchev is also aware that American patience has limits. The longer Kennedy waits, the more his own military will push him toward action. The window for a negotiated settlement may be closing even as our military position improves.</p>
+<div class="unconf">Our Washington source reports ExComm is now debating whether to wait further or to act. The voices for military action are getting louder.</div>`,
+
+      '*': `<p>The Americans chose to wait. The reasons are unclear — hesitation, intelligence gaps, or a deliberate choice to give diplomacy a chance. Regardless, missile installation continues. The Presidium must decide whether to use this time to strengthen our position or to open a back channel before American patience runs out.</p>
+<div class="unconf">Khrushchev's position within the Presidium strengthens as long as the Americans do not act. If they strike, the hardliners will dominate the response.</div>`
+    }
+  }
+},
+
+// ── ROUND 3 BRANCHING ────────────────────────────────────
+// Branches on Round 2 decisions
+// Round 3 acting = USSR (Khrushchev's two letters)
+// The letters are the historical pivot — but WHAT those letters say
+// should reflect how the crisis has evolved
+
+3: {
+  acting: {
+    // US allowed oil ship through, Soviets turned back (B-B) — most de-escalatory
+    'B': {
+      'B': `<p>The quarantine confrontation at sea ended without incident. Both sides blinked quietly. Khrushchev reads this as a signal: Kennedy is not seeking maximum confrontation. A deal may be possible.</p>
+<p>Khrushchev has drafted two letters to Kennedy. <strong>Letter One (October 26):</strong> Long, emotional, almost personal. Offers missile removal for a U.S. no-invasion pledge only. The tone is conciliatory — almost desperate.</p>
+<p><strong>Letter Two (October 27, morning):</strong> Harder in tone. Adds a new demand: U.S. Jupiter missiles out of Turkey. This was added under pressure from hardliners who argued Letter One gave away too much.</p>
+<div class="unconf">Some Presidium members believe Letter Two will poison the well — that the Turkey demand will be read as a sign of weakness rather than strength, since it looks like bargaining when we should be standing firm.</div>`,
+
+      // US boarded ships, Soviets turned back (A-B)
+      'A': `<p>The quarantine confrontation produced a partial Soviet retreat — ships turned back, but U.S. boarding attempts created tension. Khrushchev needs a diplomatic path that lets him claim the pullback was strategic, not capitulation.</p>
+<p>He has drafted two letters. <strong>Letter One</strong> offers missile removal for a no-invasion pledge — a clean deal. <strong>Letter Two</strong> adds the Turkey demand publicly, giving Khrushchev domestic cover: he can argue he extracted a price from the Americans.</p>
+<div class="unconf">Khrushchev's domestic position has weakened since the ships turned back. Hardliners are calling it a humiliation. The Turkey demand in Letter Two may be as much about internal politics as external strategy.</div>`
+    },
+
+    // US fired warning shots (D variants)
+    'D': {
+      '*': `<p>Warning shots were fired near Soviet ships at the quarantine line. Khrushchev reads this as Kennedy walking the edge — demonstrating resolve without triggering war. There may still be room for a deal.</p>
+<p>He has drafted two letters. Letter One offers a clean deal: missile removal for a no-invasion pledge. Letter Two adds the Turkey demand — partly genuine, partly to give Khrushchev leverage and domestic cover after the quarantine confrontation.</p>
+<div class="unconf">The warning shots were read differently within the Presidium. Some see them as restraint. Others see them as a prelude to full military action. Khrushchev's two letters reflect both interpretations — he is hedging.</div>`
+    },
+
+    // US strikes in Round 1 led to Round 2 — crisis is hot
+    'A': {
+      '*': `<p>Following the U.S. air strikes, the situation has been at maximum danger. Both sides have pulled back slightly from the brink — but Soviet personnel are dead, and Khrushchev is under enormous pressure from his military to retaliate.</p>
+<p>In a surprise move, Khrushchev has chosen diplomacy over retaliation — drafting two letters to Kennedy. This is seen within the Presidium as a political gamble. Letter One offers to stand down if the U.S. pledges no further military action and no invasion of Cuba. Letter Two demands the Turkey missiles as compensation for the strikes.</p>
+<div class="unconf">Khrushchev's decision to write rather than retaliate militarily has surprised his own generals. His position within the Presidium is fragile. If Kennedy rejects both letters, hardliners will likely take control of the Soviet response.</div>`
+    },
+
+    // Fallback
+    '*': {
+      '*': `<p>Khrushchev has drafted two letters to Kennedy. The first, sent October 26, offers to remove the missiles in exchange for a U.S. no-invasion pledge. The second, sent October 27, adds a harder demand: U.S. Jupiter missiles out of Turkey.</p>
+<p>The two letters reflect internal Presidium divisions — the first reflects Khrushchev's own preference for a negotiated exit, the second reflects hardliner pressure for a reciprocal concession.</p>
+<div class="unconf">Intelligence suggests the Turkey demand in Letter Two may have been added without Khrushchev's full enthusiasm — pushed by defense hardliners who felt Letter One conceded too much. This is unconfirmed.</div>`
+    }
+  },
+
+  reacting: {
+    'B': {
+      'B': `<p>Khrushchev has sent two letters. The first (October 26) offers missile removal for a no-invasion pledge — a relatively clean deal. The second (October 27) adds the Turkey demand.</p>
+<p>ExComm is divided. RFK argues: respond only to Letter One. Treat it as the operative offer. Accept publicly. Handle Turkey separately and privately. Ignore Letter Two in your public response.</p>
+<p>The escalation meter has dropped since the quarantine confrontation ended without incident. There may be more room to maneuver than there was 48 hours ago.</p>
+<div class="unconf">Intelligence suggests Letter Two may reflect hardliner pressure more than Khrushchev's personal preference. If true, responding to Letter One only may actually strengthen the situation within the Presidium.</div>`,
+
+      '*': `<p>Khrushchev has sent two contradictory letters. The first offers a clean deal. The second adds the Turkey demand. ExComm must decide which to treat as the real Soviet position.</p>
+<p>The current state of the crisis affects this calculation. The quarantine confrontation produced mixed results — enough tension to make diplomacy urgent, enough restraint to make it possible.</p>
+<div class="unconf">RFK's back-channel contact with Dobrynin suggests Khrushchev personally prefers the Letter One terms. This is one person's read of one conversation — treat with appropriate skepticism.</div>`
+    },
+
+    'A': {
+      '*': `<p>Following U.S. air strikes, Khrushchev has chosen diplomacy over retaliation — sending two letters to Kennedy. This is a significant decision that surprised his own generals.</p>
+<p>Letter One offers to stand down in exchange for a no-further-military-action pledge and no Cuba invasion. Letter Two demands the Turkey missiles as compensation for the strikes. ExComm must decide whether to engage this unexpected diplomatic opening or to press the military advantage.</p>
+<div class="unconf">CIA assesses that Khrushchev's decision to write rather than retaliate is politically fragile. If Kennedy does not respond constructively within 24 hours, Soviet hardliners may force the situation.</div>`
+    },
+
+    '*': {
+      '*': `<p>Khrushchev has sent two letters with contradictory terms. ExComm must decide which to treat as the real Soviet offer — and how to respond publicly without either conceding too much or closing the diplomatic door.</p>
+<div class="unconf">Intelligence on Khrushchev's internal political position is limited. We cannot confirm whether he can deliver on the Letter One terms even if Kennedy accepts them.</div>`
+    }
+  }
+},
+
+// ── ROUND 4 BRANCHING ────────────────────────────────────
+// U-2 shoot-down — this happens regardless of prior choices
+// but the CONTEXT and STAKES change based on escalation level
+
+4: {
+  acting: {
+    '*': {
+      '*': `<p>A U.S. U-2 reconnaissance aircraft flying over Cuba has been shot down by a Soviet SA-2 surface-to-air missile battery. The American pilot, Major Rudolf Anderson, is dead.</p>
+<p><strong>Moscow did not order this.</strong> Cuban anti-aircraft crews — acting without authorization from Khrushchev — fired the missiles. Castro had been pressuring Soviet local commanders to respond to overflights for days.</p>
+<p>Given the current state of the crisis, this incident may trigger an automatic military response. The question is whether Kennedy can resist pressure from the Joint Chiefs long enough to seek an explanation.</p>
+<div class="unconf">Our assessment: Kennedy faces overwhelming pressure from the Joint Chiefs to retaliate militarily within 24 hours. Whether he has the political standing to resist — after everything that has happened — is uncertain.</div>`
+    }
+  },
+
+  reacting: {
+    '*': {
+      '*': `<p>Major Rudolf Anderson's U-2 has been shot down over Cuba. He is dead. The Joint Chiefs are in the room with the President. General LeMay is arguing this is exactly what he predicted — Soviet forces have fired on an American military aircraft.</p>
+<p>Kennedy has approximately 24 hours before the military pressure becomes politically impossible to resist. The closer the crisis has come to catastrophe, the shorter that window becomes.</p>
+<div class="unconf">A minority CIA assessment suggests the shoot-down was ordered by Cuban commanders independently — that Khrushchev may not have authorized this action. This would change the calculus significantly. But the consensus view is that Soviet military equipment in Cuba operates under Kremlin authority.</div>`
+    }
+  }
+},
+
+// ── ROUND 6 BRANCHING ────────────────────────────────────
+// Back-channel deal — terms and stakes shift based on how crisis played out
+
+6: {
+  acting: {
+    '*': {
+      '*': `<p>Robert Kennedy met with Soviet Ambassador Anatoly Dobrynin last night. The framework of a deal exists.</p>
+<p><strong>Public terms:</strong> The Soviet Union removes its missiles from Cuba. The United States publicly pledges not to invade Cuba.</p>
+<p><strong>Private terms:</strong> The United States will remove its Jupiter missiles from Turkey within six months — never to be made public.</p>
+<p>Kennedy must decide whether to accept. If he rejects it, there may not be another offer — and the military has a strike plan ready. The higher the escalation level has climbed, the more consequential this decision becomes.</p>
+<div class="unconf">Several hawks in ExComm believe Khrushchev will accept a deal without the Turkey commitment if the U.S. holds firm — that he is more desperate than he appears. This view is not supported by what Dobrynin communicated privately.</div>`
+    }
+  },
+
+  reacting: {
+    '*': {
+      '*': `<p>Robert Kennedy met with Dobrynin last night. The Americans have offered to remove the Jupiter missiles from Turkey — privately, within six months — in exchange for Soviet missile removal from Cuba and a U.S. no-invasion pledge.</p>
+<p>This is more than Khrushchev's first letter asked for. It is a genuine American concession. How both sides see this deal depends entirely on how this crisis has unfolded — a crisis that stayed controlled looks different from one that nearly ended civilization.</p>
+<p>Accepting means removing missiles from Cuban soil without a public commitment the world can see. The Soviet military will read this as capitulation. Castro will feel abandoned.</p>
+<div class="unconf">Our Havana contact reports Castro is furious and may take unilateral military action if the missiles are removed without his formal agreement.</div>`
+    }
+  }
+}
+
+}; // end BRANCHING_INTEL
+
+// ══════════════════════════════════════════
+// BRANCHING OPTIONS — options change based on prior decisions
+// ══════════════════════════════════════════
+
+function getBranchingOptions(rd){
+  // Get the original hardcoded options from ROUNDS
+  var origRd = ROUNDS.find(function(r){return r.id===rd.id;});
+  var origAct = origRd ? origRd.actingOptions : [];
+  var origReact = origRd ? origRd.reactingOptions : [];
+  if(rd.id === 1) return {acting: origAct, reacting: origReact};
+  var prev = getPrevDecs(rd.id);
+  var act = prev.act;
+  var B = BRANCHING_OPTIONS[rd.id];
+  if(!B) return {acting: origAct, reacting: origReact};
+  var bact = B.acting ? (B.acting[act] || B.acting['*'] || origAct) : origAct;
+  var breact = B.reacting ? (B.reacting[act] || B.reacting['*'] || origReact) : origReact;
+  return {acting: bact, reacting: breact};
+}
+
+var BRANCHING_OPTIONS = {
+
+  2: {
+    acting: {
+      // US bombed in Round 1 — Round 2 is about managing the aftermath
+      'A': [
+        {id:'A', label:'Follow strikes with immediate invasion planning',
+         desc:'The strikes bought time. Order military to prepare a ground invasion of Cuba within 72 hours before Soviet forces can regroup or retaliate effectively.'},
+        {id:'B', label:'Offer an immediate ceasefire and negotiation',
+         desc:'The strikes have made the point. Now offer Khrushchev a face-saving exit: stand down, pull out the missiles, and the U.S. will not invade Cuba.'},
+        {id:'C', label:'Impose a naval blockade to prevent Soviet resupply',
+         desc:'Strikes destroyed the existing sites — now prevent the Soviets from bringing in replacement equipment or reinforcements by sea.'},
+        {id:'D', label:'Wait for Khrushchev response — give him 48 hours',
+         desc:'The strikes have changed the situation. Give Khrushchev 48 hours to respond before deciding on next steps. Acting too fast could escalate beyond control.'}
+      ],
+      // US blockaded (B) — historical quarantine path
+      'B': [
+        {id:'A', label:'Stop and board all Soviet ships crossing the line',
+         desc:'The quarantine is real or it is not. Board every ship that crosses, regardless of cargo. Show the Soviets the line means something.'},
+        {id:'B', label:'Allow the Bucharest through — it only carries oil',
+         desc:'Let civilian cargo ships pass. Stop only ships carrying military equipment. Avoid a confrontation over petroleum that serves no strategic purpose.'},
+        {id:'C', label:'Pause enforcement — give Soviets 24 more hours',
+         desc:'The quarantine is declared but enforcement can wait. Give Khrushchev one more day to respond diplomatically before the first confrontation at sea.'},
+        {id:'D', label:'Fire warning shots near the approaching ship',
+         desc:'Demonstrate the quarantine is real without boarding. Warning shots close to the ship send the message while avoiding an actual boarding incident.'}
+      ],
+      // US sent private ultimatum (C) — Round 2 is about Khrushchev's response
+      'C': [
+        {id:'A', label:'Go public — announce the missiles to the world now',
+         desc:'The private ultimatum got no meaningful response. Take it public. Announce the missiles, demand removal, and let international pressure build on Khrushchev.'},
+        {id:'B', label:'Extend the deadline — give the back channel more time',
+         desc:'Diplomacy takes time. Give Khrushchev another 48 hours to respond privately before escalating. A quiet resolution is still preferable.'},
+        {id:'C', label:'Impose a naval quarantine while negotiations continue',
+         desc:'Use the blockade as visible pressure while keeping the private channel open. Show resolve without closing the diplomatic door.'},
+        {id:'D', label:'Prepare air strikes as leverage — hold launch',
+         desc:'Move aircraft to readiness without launching. Let Soviet intelligence see the preparations. This may force Khrushchev to respond without firing a shot.'}
+      ],
+      // US waited (D) — Round 2 is a deteriorating situation
+      'D': [
+        {id:'A', label:'Act now — launch immediate air strikes before missiles go operational',
+         desc:'Waiting was a mistake. The window is closing. Launch strikes now while the missiles are still being installed. Every hour of further delay increases the risk.'},
+        {id:'B', label:'Announce a naval quarantine — stop the delay',
+         desc:'The time for gathering intelligence is over. Announce a quarantine, make the crisis public, and force Khrushchev to respond.'},
+        {id:'C', label:'Send a private ultimatum to Khrushchev with a 24-hour deadline',
+         desc:'One last attempt at a quiet resolution. Send a direct message: the missiles must go within 24 hours or the U.S. will act militarily.'},
+        {id:'D', label:'Wait further — seek additional intelligence before acting',
+         desc:'Still not enough information to act. The missiles are not yet fully operational. Continue surveillance and delay action.'}
+      ]
+    },
+
+    reacting: {
+      // Soviet response to US bombing (Round 1 A)
+      'A': [
+        {id:'A', label:'Announce formal declaration of war — prepare full military response',
+         desc:'The United States has killed Soviet personnel and destroyed Soviet military installations. This is an act of war. The Soviet Union will respond with full military force.'},
+        {id:'B', label:'Demand immediate UN Security Council emergency session',
+         desc:'Take the American aggression to the international community. Let the world judge who the aggressor is. Use the UN to buy time and build pressure.'},
+        {id:'C', label:'Order Soviet forces in Cuba to full combat readiness — no strikes yet',
+         desc:'Put all Soviet forces in Cuba on highest alert. Make clear the U.S. cannot act further without encountering Soviet military resistance — but do not fire first.'},
+        {id:'D', label:'Offer a ceasefire and open negotiations immediately',
+         desc:'The military exchange must stop here. Offer Kennedy a ceasefire: the U.S. stops military action, the Soviet Union agrees to discuss the missiles. Prevent further escalation.'}
+      ],
+      // Soviet response to US blockade (Round 1 B) — historical
+      'B': [
+        {id:'A', label:'Order the Bucharest to cross the quarantine line',
+         desc:'It carries only oil. Order it to cross and force the Americans to stop a civilian ship in front of the world. Call their bluff publicly.'},
+        {id:'B', label:'Turn the Bucharest around voluntarily',
+         desc:'Avoid a confrontation at sea. Turn back the ship. This is not retreat — it is gaining time while Khrushchev considers his full diplomatic response.'},
+        {id:'C', label:'Order submarine B-59 to surface voluntarily',
+         desc:'A voluntary surfacing is a gesture of transparency. It reduces the risk of an accidental encounter at sea and signals the Soviet Union is not trying to provoke an incident.'},
+        {id:'D', label:'Maintain radio silence — let B-59 operate on standing orders',
+         desc:'B-59 has standing orders. U.S. anti-submarine activity is the Americans choice to make. What happens next is a consequence of their aggression, not ours.'}
+      ],
+      // Soviet response to US private ultimatum (Round 1 C)
+      'C': [
+        {id:'A', label:'Ignore the ultimatum — continue missile installation and say nothing',
+         desc:'A private ultimatum that we do not acknowledge does not exist politically. Continue installation. If Kennedy wants to act, let him act publicly and face the consequences.'},
+        {id:'B', label:'Respond through Dobrynin — signal willingness to negotiate',
+         desc:'Use the back channel Kennedy opened. Dobrynin contacts RFK: the Soviet Union is willing to discuss, but will not be publicly humiliated. A quiet deal may be possible.'},
+        {id:'C', label:'Go public — announce the missiles exist and demand the Jupiters be removed',
+         desc:'Turn the private ultimatum into a public confrontation. Announce Soviet missiles in Cuba are a legitimate response to U.S. missiles in Turkey. Force the debate into the open.'},
+        {id:'D', label:'Accelerate installation — complete before the deadline expires',
+         desc:'The ultimatum gives us a deadline. Use every hour to push construction. Operational missiles cannot be demanded out of existence the same way as missiles under construction.'}
+      ],
+      // Soviet response to US waiting (Round 1 D)
+      'D': [
+        {id:'A', label:'Accelerate installation around the clock — finish before Americans act',
+         desc:'The Americans are hesitating. Use every hour of their delay. Push construction crews into round-the-clock shifts. Get the missiles operational before Kennedy finds his nerve.'},
+        {id:'B', label:'Send a quiet diplomatic signal to Washington',
+         desc:'The Americans are holding back. Send a signal through Dobrynin — the Soviet Union is open to discussion. Probe whether Kennedy hesitation is an opening for a deal.'},
+        {id:'C', label:'Hold position — make no changes while Americans deliberate',
+         desc:'Do not react to American indecision with Soviet moves that could trigger the very action Kennedy is avoiding. Hold. Let the delay work in our favor.'},
+        {id:'D', label:'Put Soviet Atlantic naval forces on heightened readiness',
+         desc:'The Americans are watching. Make sure they see what opposing the Soviet Union militarily means. Put ships and submarines on visible alert without firing a shot.'}
+      ]
+    }
+  },
+
+  3: {
+    // Round 3 acting = USSR (Khrushchev's letters)
+    // Options stay mostly the same but framing shifts based on R2 outcome
+    // The four letter options are historically fixed — what changes is context
+    // Keep same options but adjust based on R1 US decision for USSR acting options
+    acting: {
+      // If US bombed (A) in R1 — letters reflect post-strike reality
+      'A': [
+        {id:'A', label:'Stand firm — demand U.S. halt military action AND remove Turkey missiles',
+         desc:'The Americans struck first. The Soviet demands are now higher. Before any missile discussion, the U.S. must cease all military action and commit to removing the Jupiters from Turkey.'},
+        {id:'B', label:'Offer a ceasefire deal — missiles for no-invasion pledge only',
+         desc:'Khrushchev wants this to stop. Offer a clean deal: the Soviet Union will remove missiles from Cuba if the U.S. pledges not to invade and ceases all military action.'},
+        {id:'C', label:'Demand the Turkey missiles publicly at the United Nations',
+         desc:'After an American first strike, the Soviet position is strengthened internationally. Take the Turkey demand to the UN Security Council and let the world judge.'},
+        {id:'D', label:'Issue an ultimatum — U.S. must stand down within 24 hours or face consequences',
+         desc:'The Americans struck Soviet personnel. Khrushchev must respond with strength. Issue a 24-hour ultimatum: full U.S. military stand-down or the Soviet Union will respond in kind.'}
+      ],
+      // All other R1 US choices (blockade, ultimatum, wait) — standard letter options
+      '*': [
+        {id:'A', label:'Stand firm on both letters — Cuba deal AND Turkey missiles required',
+         desc:'The Jupiter missiles in Turkey are aimed at Moscow. This reciprocal demand is publicly defensible. Both withdrawals must be part of any agreement.'},
+        {id:'B', label:'Withdraw Letter Two — offer only the terms of Letter One',
+         desc:'The Turkey demand makes everything impossible for Kennedy to accept publicly. Withdraw it. Offer only the no-invasion pledge for missile removal.'},
+        {id:'C', label:'Take the Turkey demand public at the United Nations',
+         desc:'Bring the demand to the UN Security Council. Force Kennedy to respond publicly in front of the world. International pressure changes the calculation.'},
+        {id:'D', label:'Issue a harder position — full U.S. withdrawal from Caribbean',
+         desc:'Letters One and Two were too conciliatory. Issue a harder position. The Soviet Union will not be pressured by an American naval display.'}
+      ]
+    },
+    reacting: {
+      // US response to Khrushchev's letters — same options regardless of R1
+      '*': [
+        {id:'A', label:'Respond to Letter Two — negotiate privately on Turkey',
+         desc:'The Turkey demand is not unreasonable — the Jupiters are obsolete anyway. Open secret negotiations: missiles out of Cuba, Jupiters out of Turkey within 6 months, kept quiet.'},
+        {id:'B', label:'Respond to Letter One only — ignore Turkey (RFK gambit)',
+         desc:'Treat Letter One as the operative Soviet offer. Accept publicly: no-invasion pledge for missile removal. Do not acknowledge Turkey in the public response. Handle it separately.'},
+        {id:'C', label:'Reject both letters — demand immediate unconditional removal',
+         desc:'The U.S. will not negotiate the removal of missiles that should never have been placed there. Unconditional removal first. Discussion of terms afterward.'},
+        {id:'D', label:'Take the question to the UN Security Council',
+         desc:'Let U Thant mediate. Remove the direct superpower confrontation from center stage and build international pressure while both sides gain time.'}
+      ]
+    }
+  }
+
+}; // end BRANCHING_OPTIONS
+
+
+
+
+
+const DEB_QS=[
+  {id:'q1',q:'Which moment in the simulation felt most dangerous to you personally — not just the escalation meter, but gut-level dangerous? What made it feel that way?'},
+  {id:'q2',q:'Your role came with a built-in bias. How did that bias shape the arguments you made to your team? Was there a moment where you personally disagreed with what your role demanded you argue for?'},
+  {id:'q3',q:'Was the final outcome a victory for the U.S., the USSR, both, or neither? Defend your answer with at least two specific decisions from the simulation.'},
+  {id:'q4',q:'In Round 5, one Soviet officer on a submarine had the power to determine whether civilization survived October 1962. What does the Arkhipov story tell you about how history actually works?'},
+  {id:'q5',q:'Return to our unit\'s compelling question: to what extent did U.S. foreign policy during the Cold War achieve its goals through global engagement — and at what cost? Use at least one specific moment from this simulation as evidence in your answer.'}
+];
+
+// ══════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════
+let S={
+  name:'',team:'',role:'',
+  esc:6,round:0,
+  phase:'bg', // bg|acting|wait_acting|reacting|wait_reacting|consequence|ark|debrief
+  arkChoice:null,
+  r:{},   // responses keyed by string
+  db:{}   // debrief responses
+};
+
+const KEY=()=>`cmc_${S.team}_${S.role}_${S.name.replace(/\s+/g,'_')}`;
+function sv(){try{localStorage.setItem(KEY(),JSON.stringify(S));}catch(e){}}
+function ld(){
+  try{
+    const d=JSON.parse(localStorage.getItem(KEY()));
+    if(d){S.esc=d.esc||6;S.round=d.round||0;S.arkChoice=d.arkChoice||null;S.r=d.r||{};S.db=d.db||{};}
+  }catch(e){}
+}
+function sr(k,v){S.r[k]=v;sv();}
+function gr(k){return S.r[k]||'';}
+
+// No shared storage — each device is fully independent
+
+// ══════════════════════════════════════════
+// SETUP
+// ══════════════════════════════════════════
+function selTeam(t){
+  S.team=t;
+  document.getElementById('tUS').className='team-opt'+(t==='US'?' sel-us':'');
+  document.getElementById('tUSSR').className='team-opt'+(t==='USSR'?' sel-ussr':'');
+  const rf=document.getElementById('roleField');rf.style.display='block';
+  const sel=document.getElementById('roleSelect');
+  sel.innerHTML='<option value="">— select your role —</option>';
+  (ROLES[t]||[]).forEach(r=>{const o=document.createElement('option');o.value=r.id;o.textContent=r.label;sel.appendChild(o);});
+  document.getElementById('roleDesc').className='role-desc-box';
+}
+function updRole(){
+  const id=document.getElementById('roleSelect').value;
+  const box=document.getElementById('roleDesc');
+  if(!id){box.className='role-desc-box';return;}
+  S.role=id;
+  const r=(ROLES[S.team]||[]).find(x=>x.id===id);
+  if(r){box.innerHTML=r.desc;box.className='role-desc-box vis';}
+}
+function startSim(){
+  S.name=document.getElementById('sName').value.trim();
+  S.role=document.getElementById('roleSelect').value;
+  if(!S.name){alert('Please enter your name.');return;}
+  if(!S.team){alert('Please select a team.');return;}
+  if(!S.role){alert('Please select a role.');return;}
+  ld();
+  document.getElementById('setupScreen').className='screen';
+  document.getElementById('setupScreen').style.display='none';
+  document.getElementById('simScreen').className='screen active';
+  document.getElementById('simScreen').style.display='block';
+  updHdr();render();
+}
+
+// ══════════════════════════════════════════
+// HEADER
+// ══════════════════════════════════════════
+function updHdr(){
+  const ro=(ROLES[S.team]||[]).find(r=>r.id===S.role);
+  const tag=document.getElementById('stag');
+  tag.textContent=`${S.name} · ${S.team==='US'?'🇺🇸':'☭'} ${ro?ro.short:''}`;
+  tag.className=`stag ${S.team==='US'?'us':'ussr'}`;
+  const pips=document.getElementById('pips');pips.innerHTML='';
+  let pi=0;
+  ROUNDS.forEach((rd,i)=>{
+    if(rd.acting==='ARKHIPOV')return;
+    const p=document.createElement('div');
+    let c='pip';
+    if(i<S.round)c+=' done';
+    else if(i===S.round)c+=' active';
+    p.className=c;p.title=rd.title;pips.appendChild(p);pi++;
+  });
+  const e=Math.min(10,Math.max(1,S.esc));
+  const fill=document.getElementById('escFill'),num=document.getElementById('escNum');
+  fill.style.width=(e/10*100)+'%';
+  const col=e<=3?'#2a7a2a':e<=5?'#8a7010':e<=7?'#b04010':'#a02020';
+  fill.style.background=col;num.textContent=e;num.style.color=col;
+}
+
+// ══════════════════════════════════════════
+// RENDER DISPATCHER
+// ══════════════════════════════════════════
+function render(){
+  if(S.round>=ROUNDS.length){rndrDebrief();return;}
+  const rd=ROUNDS[S.round];
+  if(rd.acting==='ARKHIPOV'){rndrArk();return;}
+  document.getElementById('simBody').innerHTML=rndrRound(rd);
+  updHdr();sv();
+}
+
+// ══════════════════════════════════════════
+// BACKGROUND PAGE
+// ══════════════════════════════════════════
+function rndrBg(){
+  return `<div class="bg-page">
+  <div class="bg-hdr"><div class="bg-hdr-title">The World in October 1962</div><div class="bg-hdr-sub">Read this briefing before Round 1 begins</div></div>
+  <div class="bg-body">
+    <div class="img-pair">
+      <div class="img-panel"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/U2_photo_of_San_Cristobal_missile_site.jpg/800px-U2_photo_of_San_Cristobal_missile_site.jpg" alt="U-2 photo" onerror="this.style.display='none'"><div class="img-caption">CIA U-2 photograph of the Soviet missile site at San Cristóbal, Cuba · October 14, 1962 — the photograph that started the crisis</div></div>
+      <div class="img-panel"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Cuba_crisis_1962.png/800px-Cuba_crisis_1962.png" alt="Cuba map" onerror="this.style.display='none'"><div class="img-caption">Cuba is 90 miles from Florida — within range of medium-range ballistic missiles to strike Washington, D.C.</div></div>
+    </div>
+    <div class="bg-sec"><div class="bg-sec-title">How we got here</div>
+      <p>The United States and Soviet Union have been locked in ideological conflict since the end of World War II. Both sides possess nuclear weapons capable of destroying civilization. The doctrine governing this standoff is <strong>Mutually Assured Destruction (MAD)</strong>: if either side launches a nuclear attack, the other will retaliate, and both will be annihilated. The threat of total destruction is, paradoxically, what has prevented war.</p>
+      <p>But MAD only works when both sides believe the other is rational. In October 1962, that belief is about to be tested as it has never been before.</p>
+    </div>
+    <div class="bg-sec"><div class="bg-sec-title">The missile situation — both sides</div>
+      <div class="bg-grid">
+        <div class="bg-fact"><div class="bg-fact-lbl">🇺🇸 U.S. Jupiter missiles in Turkey</div><div class="bg-fact-val">The United States has 15 Jupiter intermediate-range ballistic missiles deployed in Turkey, pointed at Soviet cities including Moscow. Placed in 1961 as part of NATO's nuclear posture. The Soviets consider this an existential provocation — American nuclear weapons on their border. By 1962 the Jupiters are already considered technologically obsolete by the U.S. military and had been scheduled for review.</div></div>
+        <div class="bg-fact"><div class="bg-fact-lbl">☭ Soviet missiles in Cuba</div><div class="bg-fact-val">Khrushchev began secretly deploying SS-4 medium-range ballistic missiles to Cuba in the summer of 1962. Stated reason: protect Cuba from another U.S.-backed invasion after the failed Bay of Pigs operation. Unstated reason: force the Americans to remove the Jupiters from Turkey by creating a reciprocal threat. The missiles are 90 miles from Florida — within range of Washington, D.C.</div></div>
+      </div>
+    </div>
+    <div class="bg-sec"><div class="bg-sec-title">Key events that brought us here</div>
+      <div class="bg-tension"><strong>April 1961 — Bay of Pigs:</strong> CIA-trained Cuban exiles attempted to invade Cuba and overthrow Castro. The invasion failed catastrophically. Kennedy was humiliated internationally. Castro was furious and convinced another American invasion was coming. He asked Khrushchev for protection.</div>
+      <div class="bg-tension"><strong>August 1961 — Berlin Wall:</strong> The Soviet Union built a wall dividing Berlin overnight. Kennedy's hesitant response led Khrushchev to underestimate him — a miscalculation that contributed directly to the missile gamble in Cuba.</div>
+      <div class="bg-tension"><strong>1962 — Nuclear balance:</strong> The U.S. holds significant nuclear superiority — more warheads, better delivery systems. The Soviets are working urgently to close the gap. Missiles in Cuba would give the USSR first-strike capability against American cities and narrow that gap significantly.</div>
+    </div>
+    <div class="bg-sec"><div class="bg-sec-title">The leaders</div>
+      <div class="bg-grid">
+        <div class="bg-fact"><div class="bg-fact-lbl">John F. Kennedy — U.S. President</div><div class="bg-fact-val">35 years old. WWII veteran. Facing enormous domestic pressure to appear tough on communism after Bay of Pigs. Trying to avoid both nuclear war and political weakness. His brother Robert is his most trusted advisor and will conduct the critical back-channel negotiations with the Soviets.</div></div>
+        <div class="bg-fact"><div class="bg-fact-lbl">Nikita Khrushchev — Soviet Premier</div><div class="bg-fact-val">Survivor of Stalin's purges. A farmer's son who rose to lead a superpower. Impulsive, bold, theatrical. Genuinely wants to avoid nuclear war but believes strength and unpredictability are the only language the West understands. Under constant pressure from his own military hardliners who think he is too cautious.</div></div>
+      </div>
+    </div>
+    <div class="bg-sec"><div class="bg-sec-title">How to play</div>
+      <p>Each round, one team acts first — they read their intelligence briefing, argue within their team, and submit a decision. The other team sees both sets of options on their screen. The acting team announces their decision verbally to the room. The reacting team then clicks to confirm what they heard, which unlocks their response options.</p>
+      <p><strong>Read your intelligence carefully.</strong> Some of what you receive is accurate. Some is reasonable analysis that may be wrong. Some is flagged as unconfirmed — that is the condition both Kennedy and Khrushchev actually operated under. Decide accordingly.</p>
+      <p>Each student writes their own individual reasoning. Your team deliberates and agrees on a decision. Each student enters that agreed decision independently on their own device.</p>
+    </div>
+  </div></div>
+  <button class="next-btn sbtn-neu" onclick="startRounds()">Background read — begin Round 1</button>`;
+}
+function startRounds(){S.phase='acting';sv();render();}
+
+// ══════════════════════════════════════════
+// MAIN ROUND RENDERER
+// ══════════════════════════════════════════
+function rndrRound(rd){
+  const isAct=S.team===rd.acting;
+  let html=`<div class="rnd-head"><div class="rnd-num">Round ${rd.id} of 6</div><div class="rnd-title">${rd.title}</div><div class="rnd-date">${rd.date}</div></div>`;
+
+  if(S.phase==='bg') return html+rndrBg();
+
+  // Images
+  const imgs=isAct?rd.images.acting:rd.images.reacting;
+  if(imgs&&imgs.length===1){
+    html+=`<div class="img-panel"><img src="${imgs[0].url}" alt="historical photo" onerror="this.style.display='none'"><div class="img-caption">${imgs[0].cap}</div></div>`;
+  } else if(imgs&&imgs.length>=2){
+    html+=`<div class="img-pair">`;
+    imgs.forEach(im=>{html+=`<div class="img-panel"><img src="${im.url}" alt="historical photo" onerror="this.style.display='none'"><div class="img-caption">${im.cap}</div></div>`;});
+    html+=`</div>`;
+  }
+
+  // Determine what THIS device should show based on locally saved data
+  const actDecSaved  = gr('r'+rd.id+'_act_dec');
+  const reactDecSaved = gr('r'+rd.id+'_react_dec');
+  const inConfirm = gr('r'+rd.id+'_in_confirm');
+  // Resolve branching options based on prior round decisions
+  var branchOpts = getBranchingOptions(rd);
+  rd._actOpts = branchOpts.acting;
+  rd._reactOpts = branchOpts.reacting;
+
+  if(reactDecSaved){
+    // Both decisions confirmed — show consequence
+    html += rndrCon(rd);
+  } else if(actDecSaved || inConfirm){
+    // Acting team submitted OR reacting team clicked they announced
+    // Show the two-section confirm screen
+    html += rndrConfirm(rd, isAct);
+  } else {
+    // Acting team still deliberating
+    html += isAct ? rndrActing(rd) : rndrWaitAct(rd);
+  }
+  return html;
+}
+
+// ══════════════════════════════════════════
+// ACTING PHASE — acting team's view
+// ══════════════════════════════════════════
+function rndrActing(rd){
+  const ro=(ROLES[S.team]||[]).find(r=>r.id===S.role);
+  const myTeam=S.team==='US'?'us':'ussr';
+  const oppTeam=S.team==='US'?'ussr':'us';
+  const decK=`r${rd.id}_act_dec`;
+  const rsnK=`r${rd.id}_act_rsn_${S.role}`;
+  const antK=`r${rd.id}_act_ant`;
+  const jstK=`r${rd.id}_act_jst`;
+  const oppLabel=S.team==='US'?'☭ Soviet Presidium options':'🇺🇸 U.S. ExComm options';
+  const myLabel=S.team==='US'?'🇺🇸 U.S. ExComm — your decisions':'☭ Soviet Presidium — your decisions';
+
+  let html=`<div class="pbadge ph-${myTeam}"><span class="pdot"></span>${S.team==='US'?'🇺🇸 ExComm acts first this round':'☭ Presidium acts first this round'}</div>`;
+  html+=`<div class="intel int-${myTeam}"><div class="intel-eye">${S.team==='US'?'CIA / ExComm Intelligence Briefing':'KGB / Presidium Intelligence Briefing'}</div>${getActingIntel(rd)}</div>`;
+
+  if(ro) html+=`<div class="scard"><div class="scard-eye">Your role</div><span class="rtag ${ro.cls}">${ro.label}</span><p style="font-size:.88rem;color:var(--ink-mid);line-height:1.65">${ro.desc}</p></div>`;
+
+  html+=`<div class="scard"><h3>Step 1 — Your Individual Reasoning</h3>
+    <label class="flabel">What do you argue for in the room? Write from your role's perspective.</label>
+    <textarea placeholder="What would ${ro?ro.short:'your character'} advocate for, and why?" oninput="sr('${rsnK}',this.value)">${gr(rsnK)}</textarea>
+    <div class="fnote">This is your individual work — your teammates write their own reasoning on their own devices. <strong>Minimum 30 characters to count as complete.</strong></div>
+  </div>`;
+
+  // Decision section — both teams' options shown
+  html+=`<div class="scard"><h3>Step 2 — Decisions</h3>
+    <p style="font-size:.84rem;color:var(--ink-mid);margin-bottom:.85rem;line-height:1.6">Discuss with your team and agree on a decision. Each person enters the agreed decision below. The other side's options are shown for reference — they are locked until after you announce your choice.</p>`;
+
+  // YOUR options (selectable)
+  html+=`<div class="dec-section"><div class="dec-section-title dec-title-${myTeam}">${myLabel}</div><div class="dec-opts">`;
+  rd._actOpts.forEach(opt=>{
+    const saved=gr(decK);
+    const sel=saved===opt.id?` sel-${myTeam}`:'';
+    html+=`<div class="dec-opt${S.team==='USSR'?' ussr-r':''}${sel}" onclick="pickDec('${decK}','${opt.id}',this,'${myTeam}')">
+      <input type="radio" name="adec_${rd.id}" value="${opt.id}" ${saved===opt.id?'checked':''}>
+      <div class="dec-lbl"><strong>${opt.label}</strong><br>${opt.desc}</div>
+    </div>`;
+  });
+  html+=`</div></div>`;
+
+  // OPPONENT options (locked/display only)
+  const oppOptions=rd._reactOpts;
+  html+=`<div class="dec-section" style="margin-top:.75rem"><div class="dec-section-title dec-title-locked-${oppTeam}">${oppLabel} — <span style="font-weight:400;font-size:.7rem;letter-spacing:0">locked until you announce your decision</span></div><div class="dec-opts">
+    <div class="locked-note">These are the options available to the other side. Study them while you deliberate — anticipating their possible responses is part of good decision-making. They will be unlocked after you announce your decision.</div>`;
+  oppOptions.forEach(opt=>{
+    html+=`<div class="dec-opt locked-opt">
+      <span class="lock-icon">🔒</span>
+      <div class="dec-lbl"><strong>${opt.label}</strong><br>${opt.desc}</div>
+    </div>`;
+  });
+  html+=`</div></div></div>`;
+
+  html+=`<div class="scard"><h3>Step 3 — Anticipated Responses &amp; Consequences</h3>
+    <label class="flabel">${rd.anticipateQ}</label>
+    <textarea rows="4" placeholder="List at least two possible responses from the other side. For each, explain what you think would happen. This is how real decision-makers think." oninput="sr('${antK}',this.value)">${gr(antK)}</textarea>
+    <div class="fnote"><strong>Minimum 30 characters.</strong></div>
+    <div class="fnote"><strong>Minimum 30 characters.</strong></div>
+  </div>`;
+
+  html+=`<div class="scard"><h3>Step 4 — Team Justification</h3>
+    <label class="flabel">As a team, explain your decision. What drove it? What were you afraid of? What were you hoping to achieve?</label>
+    <textarea rows="4" placeholder="Your team's collective justification. Each team member enters this on their own device." oninput="sr('${jstK}',this.value)">${gr(jstK)}</textarea>
+    <div class="fnote"><strong>Minimum 30 characters.</strong></div>
+    <div class="fnote"><strong>Minimum 30 characters.</strong></div>
+  </div>`;
+
+  html+=`<button class="sbtn sbtn-${myTeam}" onclick="submitAct('${decK}')">Submit &amp; Announce Decision to the Room</button>`;
+  return html;
+}
+
+// ══════════════════════════════════════════
+// WAIT FOR ACTING — reacting team's wait view
+// ══════════════════════════════════════════
+function rndrWaitAct(rd){
+  const myTeam=S.team==='US'?'us':'ussr';
+  const oppTeam=S.team==='US'?'ussr':'us';
+  const actLabel=rd.acting==='US'?'🇺🇸 U.S. ExComm is deliberating':'☭ Soviet Presidium is deliberating';
+  const oppLabel=rd.acting==='US'?'🇺🇸 ExComm options — they will choose one of these':'☭ Presidium options — they will choose one of these';
+  const prepK=`r${rd.id}_wait_prep_${S.role}`;
+
+  let html=`<div class="pbadge ph-wait"><span class="pdot"></span>${actLabel}</div>`;
+  html+=`<div class="intel int-${myTeam}"><div class="intel-eye">Your Intelligence Briefing — prepare your response while you wait</div>${getReactingIntel(rd)}</div>`;
+
+  const ro=(ROLES[S.team]||[]).find(r=>r.id===S.role);
+  const rsnK=`r${rd.id}_react_rsn_${S.role}`;
+  if(ro) html+=`<div class="scard"><div class="scard-eye">Your role</div><span class="rtag ${ro.cls}">${ro.label}</span><p style="font-size:.88rem;color:var(--ink-mid);line-height:1.65">${ro.desc}</p></div>`;
+  html+=`<div class="scard"><h3>Step 1 — Your Individual Reasoning</h3>
+    <label class="flabel">What does your role demand you argue for? Write your position before the other team announces.</label>
+    <textarea placeholder="Write your individual reasoning from your role's perspective..." oninput="sr('${rsnK}',this.value)">${gr(rsnK)}</textarea>
+    <div class="fnote" style="color:#888">Minimum 30 characters. This is your individual work.</div>
+  </div>`;
+  html+=`<div class="scard"><h3>While You Wait — Preparation</h3>
+    <label class="flabel">What do you think the other side will do? What responses are you preparing for?</label>
+    <textarea placeholder="Record your prediction and what you're ready to respond with..." oninput="sr('${prepK}',this.value)">${gr(prepK)}</textarea>
+  </div>`;
+
+  // Show acting team's options (locked) so reacting team knows what's coming
+  html+=`<div class="scard"><h3>Their Options — Study These While You Wait</h3>
+    <p style="font-size:.84rem;color:var(--ink-mid);margin-bottom:.75rem;line-height:1.6">The other team is choosing from these options right now. Once they announce their decision verbally, you will click to confirm which one they chose.</p>
+    <div class="dec-opts">`;
+  rd._actOpts.forEach(opt=>{
+    html+=`<div class="dec-opt locked-opt">
+      <span class="lock-icon">⏳</span>
+      <div class="dec-lbl"><strong>${opt.label}</strong><br>${opt.desc}</div>
+    </div>`;
+  });
+  html+=`</div></div>`;
+
+  html+=`<button class="next-btn sbtn-${myTeam}" onclick="confirmActing()">The other side has announced — click their decision below</button>`;
+  return html;
+}
+
+function confirmActing(){
+  const rd=ROUNDS[S.round];
+  sr('r'+rd.id+'_in_confirm','1');
+  render();
+}
+
+// ══════════════════════════════════════════
+// CONFIRM PHASE — reacting team clicks acting team's announced decision
+// ══════════════════════════════════════════
+function rndrConfirm(rd, isAct){
+  const myTeam=S.team==='US'?'us':'ussr';
+  const oppTeam=S.team==='US'?'ussr':'us';
+  const actDecK='r'+rd.id+'_act_dec';
+  const reactDecK='r'+rd.id+'_react_dec';
+  const confirmedActDec=gr(actDecK);
+  const confirmedReactDec=gr(reactDecK);
+  const actTeamName=rd.acting==='US'?'U.S. ExComm':'Soviet Presidium';
+  const reactTeamName=rd.acting==='US'?'Soviet Presidium':'U.S. ExComm';
+  const actEmoji=rd.acting==='US'?'🇺🇸':'☭';
+  const reactEmoji=rd.acting==='US'?'☭':'🇺🇸';
+
+  let html=`<div class="pbadge ph-wait"><span class="pdot"></span>${actEmoji} ${actTeamName} has announced — both teams confirm below</div>`;
+
+  // Section 1: Acting team's decision (confirmed in gold, others locked)
+  html+=`<div class="scard">
+    <h3>${actEmoji} ${actTeamName} Decision — Announced to the Room</h3>
+    <p style="font-size:.84rem;color:var(--ink-mid);margin-bottom:.75rem;line-height:1.6">
+      ${isAct?'Your team submitted this decision and announced it verbally.':'Click the option you heard the '+actTeamName+' announce.'}
+    </p>
+    <div class="dec-opts">`;
+
+  rd._actOpts.forEach(opt=>{
+    let cls, clickHandler='';
+    if(confirmedActDec===opt.id){
+      cls='dec-opt confirmed-opt';
+    } else if(!confirmedActDec && !isAct){
+      cls='dec-opt pending-opt';
+      clickHandler=`onclick="confirmOppDec('${actDecK}','${opt.id}')"`;
+    } else if(!confirmedActDec && isAct){
+      // Acting team re-confirms their own choice (click to proceed)
+      cls='dec-opt pending-opt';
+      clickHandler=`onclick="confirmOppDec('${actDecK}','${opt.id}')"`;
+    } else {
+      cls='dec-opt locked-opt';
+    }
+    const badge=confirmedActDec===opt.id?`<span class="conf-badge">announced</span>`:'';
+    html+=`<div class="${cls}" ${clickHandler}>
+      <div class="dec-lbl"><strong>${opt.label}</strong>${badge}<br>${opt.desc}</div>
+    </div>`;
+  });
+  html+=`</div>`;
+  if(!confirmedActDec){
+    html+=`<p class="fnote" style="text-align:center;margin-top:.5rem">Click the option that was announced to the room.</p>`;
+  }
+  html+=`</div>`;
+
+  // Section 2: Reacting team's decision entry (only shown after acting is confirmed)
+  if(confirmedActDec){
+    html+=`<div class="scard">
+      <h3>${reactEmoji} ${reactTeamName} Response — Enter After They Announce</h3>
+      <p style="font-size:.84rem;color:var(--ink-mid);margin-bottom:.75rem;line-height:1.6">
+        The ${reactTeamName} will now deliberate and announce their response. Click the option they choose.
+      </p>
+      <div class="dec-opts">`;
+
+    rd._reactOpts.forEach(opt=>{
+      let cls, clickHandler='';
+      if(confirmedReactDec===opt.id){
+        cls='dec-opt confirmed-opt';
+      } else if(!confirmedReactDec){
+        cls='dec-opt pending-opt';
+        clickHandler=`onclick="confirmReactDec('${reactDecK}','${opt.id}')"`;
+      } else {
+        cls='dec-opt locked-opt';
+      }
+      const badge=confirmedReactDec===opt.id?`<span class="conf-badge">confirmed</span>`:'';
+      html+=`<div class="${cls}" ${clickHandler}>
+        <div class="dec-lbl"><strong>${opt.label}</strong>${badge}<br>${opt.desc}</div>
+      </div>`;
+    });
+    html+=`</div>`;
+    if(!confirmedReactDec){
+      html+=`<p class="fnote" style="text-align:center;margin-top:.5rem">Click the option the ${reactTeamName} announces.</p>`;
+    }
+    html+=`</div>`;
+  }
+
+  // Proceed to consequence once both are confirmed
+  if(confirmedActDec && confirmedReactDec){
+    html+=`<button class="next-btn sbtn-neu" onclick="revealCon()">Both decisions confirmed — reveal the outcome</button>`;
+  }
+
+  return html;
+}
+
+
+function proceedToReact(){sv();render();}
+
+// ══════════════════════════════════════════
+// CONFIRM + REACT — reacting team's main view
+// ══════════════════════════════════════════
+function rndrReacting(rd){
+  const ro=(ROLES[S.team]||[]).find(r=>r.id===S.role);
+  const myTeam=S.team==='US'?'us':'ussr';
+  const oppTeam=S.team==='US'?'ussr':'us';
+  const actDecK=`r${rd.id}_act_dec`;
+  const confirmedActDec=gr(actDecK);
+  const reactDecK=`r${rd.id}_react_dec`;
+  const rsnK=`r${rd.id}_react_rsn_${S.role}`;
+  const antK=`r${rd.id}_react_ant`;
+  const jstK=`r${rd.id}_react_jst`;
+  const actLabel=rd.acting==='US'?'🇺🇸 U.S. ExComm announced:':'☭ Soviet Presidium announced:';
+  const myLabel=S.team==='US'?'🇺🇸 U.S. ExComm — your response':'☭ Soviet Presidium — your response';
+  const actTeamName=rd.acting==='US'?'U.S. ExComm':'Soviet Presidium';
+
+  let html=`<div class="pbadge ph-${myTeam}"><span class="pdot"></span>Your team responds</div>`;
+  html+=`<div class="intel int-${myTeam}"><div class="intel-eye">Updated Intelligence Briefing</div>${getReactingIntel(rd)}</div>`;
+
+  // Show confirmed acting decision at top
+  if(confirmedActDec){
+    const actOpt=rd._actOpts.find(o=>o.id===confirmedActDec);
+    html+=`<div class="intel int-neu" style="margin-bottom:.9rem">
+      <div class="intel-eye">Confirmed — ${actTeamName} chose:</div>
+      <p><strong>${actOpt?actOpt.label:'Decision recorded.'}</strong></p>
+      ${actOpt?`<p style="font-size:.85rem;color:var(--ink-mid)">${actOpt.desc}</p>`:''}
+    </div>`;
+  }
+
+  if(ro) html+=`<div class="scard"><div class="scard-eye">Your role</div><span class="rtag ${ro.cls}">${ro.label}</span><p style="font-size:.88rem;color:var(--ink-mid);line-height:1.65">${ro.desc}</p></div>`;
+
+  html+=`<div>`;
+
+
+  html+=`<div class="scard"><h3>Step 2 — Your Individual Reasoning</h3>
+    <label class="flabel">How do you react to their decision? What does your role demand you argue for now?</label>
+    <textarea placeholder="Write your individual argument for your team's response..." oninput="sr('${rsnK}',this.value)">${gr(rsnK)}</textarea>
+    <div class="fnote">Your individual work. <strong>Minimum 30 characters to count as complete.</strong></div>
+  </div>`;
+
+  // Their confirmed choice shown, your response options
+  if(confirmedActDec){
+    const actOpt=rd._actOpts.find(o=>o.id===confirmedActDec);
+    html+=`<div class="dec-section"><div class="dec-section-title dec-title-locked-${oppTeam}">${actLabel}</div>
+      <div class="dec-opts"><div class="dec-opt confirmed-opt">
+        <div class="dec-lbl"><strong>${actOpt?actOpt.label:'Decision recorded'}</strong><span class="conf-badge">their choice</span><br>${actOpt?actOpt.desc:''}</div>
+      </div></div></div>`;
+  }
+
+  html+=`<div class="dec-section" style="margin-top:.75rem"><div class="dec-section-title dec-title-${myTeam}">${myLabel}</div><div class="dec-opts">`;
+  rd._reactOpts.forEach(opt=>{
+    const saved=gr(reactDecK);
+    const sel=saved===opt.id?` sel-${myTeam}`:'';
+    html+=`<div class="dec-opt${S.team==='USSR'?' ussr-r':''}${sel}" onclick="pickDec('${reactDecK}','${opt.id}',this,'${myTeam}')">
+      <input type="radio" name="rdec_${rd.id}" value="${opt.id}" ${saved===opt.id?'checked':''}>
+      <div class="dec-lbl"><strong>${opt.label}</strong><br>${opt.desc}</div>
+    </div>`;
+  });
+  html+=`</div></div>`;
+
+  html+=`<div class="scard"><h3>Step 3 — Anticipated Consequences</h3>
+    <label class="flabel">${rd.anticipateQ}</label>
+    <textarea rows="4" placeholder="What do you think happens next as a result of your response? What are you most prepared for?" oninput="sr('${antK}',this.value)">${gr(antK)}</textarea>
+  </div>`;
+
+  html+=`<div class="scard"><h3>Step 4 — Team Justification</h3>
+    <label class="flabel">As a team, explain your response and what you hope it achieves.</label>
+    <textarea rows="4" placeholder="Your team's collective justification for this response..." oninput="sr('${jstK}',this.value)">${gr(jstK)}</textarea>
+  </div>`;
+
+  html+=`<button class="sbtn sbtn-${myTeam}" onclick="submitReact('${reactDecK}')">Submit Response — Reveal the Outcome</button>`;
+  html+=`</div>`;
+  return html;
+}
+
+// ══════════════════════════════════════════
+// WAIT FOR REACTING — acting team's wait view
+// ══════════════════════════════════════════
+function rndrWaitReact(rd){
+  const myTeam=S.team==='US'?'us':'ussr';
+  const decK=`r${rd.id}_act_dec`;
+  const jstK=`r${rd.id}_act_jst`;
+  const obsK=`r${rd.id}_obs_${S.role}`;
+  const myDecId=gr(decK);
+  const myDec=rd._actOpts.find(o=>o.id===myDecId);
+  const reactLabel=rd.acting==='US'?'☭ Soviet Presidium is responding':'🇺🇸 U.S. ExComm is responding';
+  const reactOpts=rd._reactOpts;
+
+  let html=`<div class="pbadge ph-wait"><span class="pdot"></span>${reactLabel}</div>`;
+
+  html+=`<div class="sit-rep"><div class="sit-rep-title">Your decision — now announced to the room:</div>
+    <div style="background:#081420;border:1px solid #1a2e44;border-radius:4px;padding:.75rem .9rem;font-size:.9rem;color:#dde8f5;line-height:1.55;margin-bottom:.5rem">
+      ${myDec?`<strong>${myDec.label}</strong><br>${myDec.desc}`:'Decision recorded.'}
+    </div>
+    ${gr(jstK)?`<div style="font-size:.78rem;color:#666;margin-top:.4rem">Team justification: ${gr(jstK)}</div>`:''}
+  </div>`;
+
+  html+=`<div class="scard"><h3>Their Response Options — Study These While You Wait</h3>
+    <p style="font-size:.84rem;color:var(--ink-mid);margin-bottom:.75rem;line-height:1.6">The other team is choosing their response right now. Study their options and think about what you'll see on the consequence screen.</p>
+    <div class="dec-opts">`;
+  reactOpts.forEach(opt=>{
+    html+=`<div class="dec-opt locked-opt">
+      <span class="lock-icon">⏳</span>
+      <div class="dec-lbl"><strong>${opt.label}</strong><br>${opt.desc}</div>
+    </div>`;
+  });
+  html+=`</div></div>`;
+
+  html+=`<div class="scard"><h3>While You Wait</h3>
+    <label class="flabel">What response do you expect from the other side — and what are you most worried about?</label>
+    <textarea placeholder="Record your prediction and reasoning..." oninput="sr('${obsK}',this.value)">${gr(obsK)}</textarea>
+  </div>`;
+
+  html+=`<div class="wait-box"><p style="font-size:.88rem;color:var(--ink-mid)">⏳ <strong>Waiting for the other team to deliberate and submit their response.</strong></p><p style="margin-top:6px;font-size:.84rem;color:var(--ink-faint)">Once they submit and announce their response verbally, the consequence screen will be ready. Use the button below only after they have announced.</p></div>`;
+  html+=`<button class="next-btn sbtn-neu" onclick="actingTeamReveal()">Other team has announced their response — see the outcome</button>`;
+  return html;
+}
+
+// ══════════════════════════════════════════
+// CONSEQUENCE
+// ══════════════════════════════════════════
+function rndrCon(rd){
+  const actId=gr('r'+rd.id+'_act_dec')||'B';
+  const reactId=gr('r'+rd.id+'_react_dec')||'B';
+  const actOpt=rd._actOpts.find(o=>o.id===actId);
+  const reactOpt=rd._reactOpts.find(o=>o.id===reactId);
+  const ck=`${actId}-${reactId}`;
+  const con=(CONS[rd.id]||{})[ck]||(CONS[rd.id]||{})['B-B']||{t:'The decisions are recorded.',e:S.esc,c:'neu'};
+  const prevEsc=S.esc;
+  if(con.e!==undefined)S.esc=con.e;
+  sv();updHdr();
+  const cmap={good:{cls:'con-good',lbl:'De-escalation'},bad:{cls:'con-bad',lbl:'Escalation'},neu:{cls:'con-neu',lbl:'Stalemate'},critical:{cls:'con-crit',lbl:'Crisis Point'}};
+  const cm=cmap[con.c]||cmap.neu;
+  const actTeam=rd.acting==='US'?'🇺🇸 United States':'☭ Soviet Union';
+  const reactTeam=rd.acting==='US'?'☭ Soviet Union':'🇺🇸 United States';
+  const reflK=`r${rd.id}_refl`;
+  const isLast=S.round>=ROUNDS.length-1;
+
+  let html=`<div class="pbadge ph-both"><span class="pdot"></span>Situation Report — Round ${rd.id} Outcome</div>`;
+
+  html+=`<div class="sit-rep"><div class="sit-rep-title">What both sides decided:</div>
+    <div class="sit-grid">
+      <div class="sit-cell sit-${rd.acting==='US'?'us':'ussr'}-cell">
+        <div class="sit-cell-lbl">${actTeam} · acted first</div>
+        <div class="sit-cell-val">${actOpt?`<strong>${actOpt.label}</strong><br><span style="font-size:.8rem;opacity:.8">${actOpt.desc}</span>`:'Decision recorded.'}</div>
+      </div>
+      <div class="sit-cell sit-${rd.acting==='US'?'ussr':'us'}-cell">
+        <div class="sit-cell-lbl">${reactTeam} · responded</div>
+        <div class="sit-cell-val">${reactOpt?`<strong>${reactOpt.label}</strong><br><span style="font-size:.8rem;opacity:.8">${reactOpt.desc}</span>`:'Decision recorded.'}</div>
+      </div>
+    </div>
+    <div class="sit-${con.c==='good'?'good':con.c==='bad'?'bad':'neu'} sit-outcome"><strong>${cm.lbl}:</strong> ${con.t}</div>
+    <div class="sit-esc">Escalation meter: ${prevEsc} → ${S.esc} / 10</div>
+  </div>`;
+
+  html+=`<div class="scard"><h3>Individual Reflection</h3>
+    <label class="flabel">What surprises you about this outcome? What does it tell you about this crisis?</label>
+    <textarea placeholder="Write your individual reflection on this outcome..." oninput="sr('${reflK}',this.value)">${gr(reflK)}</textarea>
+  </div>`;
+
+  html+=`<button class="next-btn sbtn-neu" onclick="nextRound()">${isLast?'Proceed to Debrief Questions':`Continue to Round ${S.round+2}${S.round===3?' — Special Event: The Arkhipov Moment':''}`}</button>`;
+  return html;
+}
+
+// ══════════════════════════════════════════
+// ARKHIPOV
+// ══════════════════════════════════════════
+function rndrArk(){
+  const body=document.getElementById('simBody');
+  let html=`<div class="rnd-head"><div class="rnd-num">Round 5 of 6 · Special Event</div><div class="rnd-title">The Arkhipov Moment — Submarine B-59</div><div class="rnd-date">October 27, 1962</div></div>`;
+
+  html+=`<div class="img-pair">
+    <div class="img-panel"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/B-59_submarine.jpg/800px-B-59_submarine.jpg" alt="Submarine B-59" onerror="this.style.display='none'"><div class="img-caption">Soviet submarine B-59 — the vessel at the center of the most dangerous moment of the Cuban Missile Crisis</div></div>
+    <div class="img-panel"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Vasili_Arkhipov.jpg/400px-Vasili_Arkhipov.jpg" alt="Vasili Arkhipov" onerror="this.style.display='none'"><div class="img-caption">Vasili Arkhipov, Second-in-Command of Submarine B-59 — the officer who may have saved the world</div></div>
+  </div>`;
+
+  html+=`<div class="intel int-neu"><div class="intel-eye">Situation — Atlantic Ocean, below the surface</div>
+    <p>Deep below the Atlantic, Soviet submarine B-59 is being tracked by U.S. destroyers. The Americans are dropping practice depth charges — small explosive signals used to force the submarine to surface and identify itself. They are not weapons. But inside B-59, the crew does not know that.</p>
+    <p>The crew has been submerged for days. They have lost reliable communication with Moscow. <strong>They do not know if war has already started.</strong> The temperature inside the hull exceeds 110°F. Carbon dioxide levels are rising dangerously. The captain, Valentin Savitsky, is convinced they are under attack.</p>
+    <p>B-59 is armed with a nuclear torpedo — equivalent in destructive power to the bomb dropped on Hiroshima. Soviet doctrine requires authorization from three officers to fire: the captain, the political officer, and the second-in-command.</p>
+    <p><strong>The captain and the political officer have both voted yes. They are prepared to fire a nuclear weapon at U.S. warships.</strong></p>
+    <p>The second-in-command, Vasili Arkhipov, is the only one left. He has not yet voted.</p>
+  </div>`;
+
+  if(S.team==='USSR'&&S.role==='hardliner'){
+    if(S.arkChoice){html+=arkResult();}
+    else{
+      html+=`<div class="ark-card"><div class="ark-hdr">⚠ Special Role Card — You Are Vasili Arkhipov</div>
+        <div class="ark-body">Your fellow Soviet team members do not know you hold this card. This choice is yours alone — before any group discussion, before anyone else on your team knows what you are deciding.<br><br>
+        The captain is convinced they are under attack. The depth charges are getting closer. The crew believes war has already started above them. The political officer voted yes. You have thirty seconds.<br><br>
+        <strong>Vote YES:</strong> The nuclear torpedo fires. A weapon equivalent to Hiroshima detonates near U.S. warships. What happens next is unknowable — but it is almost certainly nuclear war between the two most powerful nations in history.<br><br>
+        <strong>Vote NO:</strong> You override the captain. You are the only reason the torpedo does not fire. You may be ending your naval career. You do not care.</div>
+        <div class="ark-choices">
+          <button class="ark-btn ark-yes" onclick="arkDecide('yes')">Vote YES — Authorize the nuclear torpedo</button>
+          <button class="ark-btn ark-no" onclick="arkDecide('no')">Vote NO — Override the captain. The torpedo does not fire.</button>
+        </div>
+      </div>`;
+    }
+  } else if(S.team==='USSR'){
+    const wk='r5_ussr_wait';
+    html+=`<div class="scard"><h3>While the Decision Is Being Made</h3>
+      <p style="font-size:.88rem;color:var(--ink-mid);margin-bottom:.7rem;line-height:1.65">On your team, one officer privately holds Arkhipov's card right now. While they decide, answer this individually on your own device:</p>
+      <label class="flabel">If you were Arkhipov — what would you do, and why?</label>
+      <textarea placeholder="Would you vote yes or no? What factors matter most in this moment — duty, conscience, the uncertainty about whether you're actually being attacked?" oninput="sr('${wk}',this.value)">${gr(wk)}</textarea>
+    </div>`;
+    if(S.arkChoice){html+=arkResult();}
+    else{
+      html+=`<div class="wait-box"><p style="font-size:1.2rem;margin-bottom:.5rem">⚠</p><p><strong>Arkhipov is deciding.</strong></p><p style="margin-top:6px">The three-officer committee is meeting inside submarine B-59. Two officers have already voted yes.</p></div>
+      <button class="next-btn sbtn-ussr" onclick="arkReveal()">Arkhipov has decided — reveal the outcome</button>`;
+    }
+  } else {
+    const wk='r5_us_wait';
+    html+=`<div class="scard"><h3>ExComm Does Not Know This Is Happening</h3>
+      <p style="font-size:.88rem;color:var(--ink-mid);margin-bottom:.7rem;line-height:1.65">Right now, a Soviet officer is deciding whether to fire a nuclear torpedo at American warships. The President of the United States has no idea. While the Soviet team deliberates, answer this individually:</p>
+      <label class="flabel">You are the commander of the U.S. destroyer dropping practice depth charges on B-59. You believe this is a routine procedure to force the submarine to surface. You do not know what is happening inside that submarine. Would you continue — and what would change your decision?</label>
+      <textarea placeholder="Write your individual response..." oninput="sr('${wk}',this.value)">${gr(wk)}</textarea>
+    </div>`;
+    if(S.arkChoice){html+=arkResult();}
+    else{
+      html+=`<div class="wait-box"><p style="font-size:1.2rem;margin-bottom:.5rem">⚠</p><p><strong>Something is happening below the surface.</strong></p><p style="margin-top:6px">Your anti-submarine crew reports that the Soviet submarine has not surfaced. The depth charge signals are continuing. You are waiting.</p></div>
+      <button class="next-btn sbtn-us" onclick="arkReveal()">The Soviet submarine has surfaced — see what happened</button>`;
+    }
+  }
+
+  body.innerHTML=html;updHdr();sv();
+}
+
+function arkDecide(c){S.arkChoice=c;S.esc=c==='yes'?10:Math.max(3,S.esc-1);sv();rndrArk();}
+function arkReveal(){if(!S.arkChoice)S.arkChoice='historical';sv();rndrArk();}
+
+function arkResult(){
+  const c=S.arkChoice;
+  const rk='r5_ark_refl';
+  let html='';
+  if(c==='yes'){
+    html+=`<div class="con-card con-crit"><div class="con-title">Arkhipov votes yes. The torpedo fires.</div>
+      <div class="con-body">A nuclear weapon detonates near U.S. destroyers in the Atlantic. Several ships are destroyed. Hundreds of American sailors are dead.<br><br>
+      President Kennedy is informed. The Joint Chiefs have a single recommendation: full retaliatory nuclear strike on the Soviet Union.<br><br>
+      There is no Round 6. The simulation cannot continue from this point.<br><br>
+      <strong>In October 1962, the real Vasili Arkhipov voted no. He argued with the captain for twenty minutes in a flooded, overheated submarine. He refused to authorize the torpedo. The world does not know his name. He is one of the reasons you are alive.</strong></div>
+    </div>`;
+  } else {
+    html+=`<div class="con-card con-good"><div class="con-title">${c==='historical'?'Arkhipov votes no — as he did in history.':'Arkhipov votes no.'}</div>
+      <div class="con-body">Vasili Arkhipov argues with the captain for twenty minutes inside the flooded, overheated submarine. He refuses to authorize the nuclear torpedo. He is overruling his captain — an act that may end his naval career. He does not care.<br><br>
+      B-59 surfaces. U.S. destroyers immediately surround it. The confrontation at sea ends without a weapon being fired. The crew is exhausted, dehydrated, and shaken — but alive.<br><br>
+      The world does not know how close it just came. Kennedy does not know. Khrushchev does not know. Only three men in a submarine know what happened — and one of them just chose to save the world.</div>
+    </div>`;
+  }
+  html+=`<div class="scard"><h3>Reflection — The Arkhipov Moment</h3>
+    <label class="flabel">One person's decision, in a submarine no one was watching, may have determined whether civilization survived October 1962. What does this tell you about how history works?</label>
+    <textarea placeholder="Write your individual reflection on this moment and what it means..." oninput="sr('${rk}',this.value)">${gr(rk)}</textarea>
+  </div>`;
+  html+=`<button class="next-btn sbtn-neu" onclick="afterArk()">Continue to Round 6 — The Back-Channel Deal</button>`;
+  return html;
+}
+function afterArk(){S.round++;sv();render();}
+
+// ══════════════════════════════════════════
+// DECISION HELPERS
+// ══════════════════════════════════════════
+function pickDec(key,val,el,team){
+  const parent=el.closest('.dec-opts')||el.parentElement;
+  parent.querySelectorAll('.dec-opt').forEach(d=>{d.className=d.className.replace(/ sel-us| sel-ussr/g,'');});
+  el.className+=` sel-${team}`;
+  const r=el.querySelector('input[type=radio]');if(r)r.checked=true;
+  sr(key,val);
+}
+
+function confirmOppDec(key,val){
+  sr(key,val);
+  const rd=ROUNDS[S.round];
+  sr('r'+rd.id+'_opp_confirmed','1');
+  render();
+}
+
+function confirmReactDec(key,val){
+  sr(key,val); // saves react_dec on this device
+  render();
+}
+
+// ══════════════════════════════════════════
+// PHASE TRANSITIONS
+// ══════════════════════════════════════════
+function submitAct(decK){
+  if(!gr(decK)){alert('Please select a decision before submitting.');return;}
+  sv();render();
+}
+function submitReact(decK){
+  if(!gr(decK)){alert('Please select a response before submitting.');return;}
+  sv();render();
+}
+function revealCon(){sv();render();}
+
+function actingTeamReveal(){
+  const rd=ROUNDS[S.round];
+  const reactKey='r'+rd.id+'_react_dec';
+  if(gr(reactKey)){
+    sv();render();
+  } else {
+    alert('The other team has not submitted their response yet. Wait for them to submit before revealing the outcome.');
+  }
+}
+
+
+function nextRound(){S.round++;sv();render();}
+
+
+// ══════════════════════════════════════════
+// COMPLETION GRADING
+// ══════════════════════════════════════════
+function calcCompletion(){
+  var total = 0, earned = 0;
+  var missing = [];
+
+  // Per round checks
+  ROUNDS.forEach(function(rd){
+    if(rd.acting === 'ARKHIPOV'){
+      // Arkhipov reflection
+      total += 1;
+      var wk = S.team==='US' ? 'r5_us_wait' : (S.role==='hardliner' ? 'r5_ark_refl' : 'r5_ussr_wait');
+      if(gr(wk).trim().length > 20){ earned += 1; }
+      else { missing.push('Round 5: Your individual reflection'); }
+      total += 1;
+      if(gr('r5_ark_refl').trim().length > 20){ earned += 1; }
+      else { missing.push('Round 5: Arkhipov moment reflection'); }
+      return;
+    }
+
+    var isAct = S.team === rd.acting;
+    var rsnKey = isAct ? 'r'+rd.id+'_act_rsn_'+S.role : 'r'+rd.id+'_react_rsn_'+S.role;
+    var decKey = isAct ? 'r'+rd.id+'_act_dec' : 'r'+rd.id+'_react_dec';
+    var antKey = isAct ? 'r'+rd.id+'_act_ant' : 'r'+rd.id+'_react_ant';
+    var jstKey = isAct ? 'r'+rd.id+'_act_jst' : 'r'+rd.id+'_react_jst';
+    var reflKey = 'r'+rd.id+'_refl';
+
+    // Individual reasoning (most important)
+    total += 2;
+    if(gr(rsnKey).trim().length > 30){ earned += 2; }
+    else if(gr(rsnKey).trim().length > 10){ earned += 1; missing.push('Round '+rd.id+': Individual reasoning (incomplete)'); }
+    else { missing.push('Round '+rd.id+': Individual reasoning (missing)'); }
+
+    // Team decision
+    total += 1;
+    if(gr(decKey)){ earned += 1; }
+    else { missing.push('Round '+rd.id+': Team decision not recorded'); }
+
+    // Anticipated responses
+    total += 1;
+    if(gr(antKey).trim().length > 30){ earned += 1; }
+    else { missing.push('Round '+rd.id+': Anticipated responses'); }
+
+    // Team justification
+    total += 1;
+    if(gr(jstKey).trim().length > 30){ earned += 1; }
+    else { missing.push('Round '+rd.id+': Team justification'); }
+
+    // Outcome reflection
+    total += 1;
+    if(gr(reflKey).trim().length > 20){ earned += 1; }
+    else { missing.push('Round '+rd.id+': Outcome reflection'); }
+  });
+
+  // Debrief questions
+  DEB_QS.forEach(function(q, i){
+    total += 2;
+    var val = S.db[q.id] || '';
+    if(val.trim().length > 80){ earned += 2; }
+    else if(val.trim().length > 30){ earned += 1; missing.push('Debrief Q'+(i+1)+': Response too brief'); }
+    else { missing.push('Debrief Q'+(i+1)+': Not answered'); }
+  });
+
+  var pct = total > 0 ? Math.round((earned/total)*100) : 0;
+  return {earned:earned, total:total, pct:pct, missing:missing};
+}
+
+function renderGrade(){
+  var g = calcCompletion();
+  var col = g.pct >= 90 ? '#1a5c1a' : g.pct >= 70 ? '#7a5c00' : '#7a1a1a';
+  var bg  = g.pct >= 90 ? '#e8f5e8' : g.pct >= 70 ? '#fef5e0' : '#fceaea';
+  var bdr = g.pct >= 90 ? '#3a8a3a' : g.pct >= 70 ? '#c8a820' : '#c04040';
+  var label = g.pct >= 90 ? 'Complete' : g.pct >= 70 ? 'Mostly complete' : 'Incomplete';
+
+  var missingHtml = '';
+  if(g.missing.length > 0 && g.pct < 100){
+    missingHtml = '<details style="margin-top:.6rem"><summary style="font-size:.78rem;color:'+col+';cursor:pointer">Show missing items ('+g.missing.length+')</summary><ul style="margin:.4rem 0 0 1rem;font-size:.78rem;color:'+col+';line-height:1.8">'
+      + g.missing.map(function(m){return '<li>'+m+'</li>';}).join('')
+      + '</ul></details>';
+  }
+
+  return '<div style="background:'+bg+';border:1px solid '+bdr+';border-radius:6px;padding:.75rem 1rem;margin-bottom:.9rem">'
+    + '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">'
+    + '<div style="font-size:.8rem;font-weight:600;color:'+col+'">Completion: '+label+'</div>'
+    + '<div style="font-size:1rem;font-weight:700;color:'+col+'">'+g.earned+'/'+g.total+' points ('+g.pct+'%)</div>'
+    + '</div>'
+    + missingHtml
+    + '</div>';
+}
+
+// ══════════════════════════════════════════
+// DEBRIEF
+// ══════════════════════════════════════════
+function rndrDebrief(){
+  document.querySelectorAll('.screen').forEach(s=>{s.className='screen';s.style.display='none';});
+  let deb=document.getElementById('debriefScreen');
+  if(!deb){deb=document.createElement('div');deb.id='debriefScreen';document.body.appendChild(deb);}
+  deb.className='screen active';deb.style.display='block';
+  const escCol=S.esc>=8?'#a02020':S.esc>=5?'#8a7010':'#2a7a2a';
+  const gradeHtml=renderGrade();
+  let html=`<div class="deb-hdr"><div class="deb-title">Simulation Complete</div>
+    <div class="deb-sub">October 28, 1962 — The crisis is over. Now reflect.</div>
+    <div style="margin-top:.6rem;font-size:.8rem;color:#666">Final escalation level: <span style="color:${escCol};font-weight:700">${S.esc}/10</span></div>
+  </div>
+  <div class="deb-body">
+    ${gradeHtml}
+    <div style="background:var(--paper-dark);border:1px solid var(--border);border-radius:var(--rad);padding:.9rem 1.1rem;margin-bottom:1rem;font-size:.88rem;color:var(--ink-mid);line-height:1.7">
+      Answer each question individually — these are your own reflections, not team answers. When finished, click <strong>Save to PDF</strong> to generate your submission.
+    </div>`;
+  DEB_QS.forEach((q,i)=>{
+    html+=`<div class="deb-q">
+      <div class="deb-qnum">Debrief Question ${i+1} of ${DEB_QS.length}</div>
+      <div class="deb-qtext">${q.q}</div>
+      <textarea rows="5" placeholder="Write your response here..." oninput="svDb('${q.id}',this.value)">${S.db[q.id]||''}</textarea>
+      <div class="fnote"><strong>Minimum 80 characters to count as complete.</strong></div>
+    </div>`;
+  });
+  html+=`<button class="save-btn" onclick="toPDF()">Save to PDF — Generate Submission</button></div>`;
+  deb.innerHTML=html;sv();
+}
+function svDb(id,val){S.db[id]=val;sv();}
+
+// ══════════════════════════════════════════
+// PDF
+// ══════════════════════════════════════════
+function toPDF(){
+  const pv=document.getElementById('printView');
+  const ro=(ROLES[S.team]||[]).find(r=>r.id===S.role);
+  var g = calcCompletion();
+  const gradeColor = g.pct>=90?'#1a5c1a':g.pct>=70?'#7a5c00':'#7a1a1a';
+  const gradeBg = g.pct>=90?'#e8f5e8':g.pct>=70?'#fef5e0':'#fceaea';
+  const gradeBdr = g.pct>=90?'#3a8a3a':g.pct>=70?'#c8a820':'#c04040';
+  const gradeLabel = g.pct>=90?'Complete':g.pct>=70?'Mostly complete':'Incomplete';
+  let html=`<div class="pt-hdr">
+    <div class="pt-title">Cuban Missile Crisis Simulation — October 1962</div>
+    <div class="pt-meta">U.S. History · Cold War Unit</div>
+    <div class="pt-meta" style="margin-top:3px"><strong>Student:</strong> ${S.name} &nbsp;|&nbsp; <strong>Team:</strong> ${S.team==='US'?'United States (ExComm)':'Soviet Union (Presidium)'} &nbsp;|&nbsp; <strong>Role:</strong> ${ro?ro.label:S.role} &nbsp;|&nbsp; <strong>Escalation:</strong> ${S.esc}/10</div>
+  </div>
+  <div style="background:${gradeBg};border:2px solid ${gradeBdr};border-radius:6px;padding:.9rem 1.2rem;margin:1rem 0;display:flex;align-items:center;justify-content:space-between">
+    <div>
+      <div style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:${gradeColor};font-weight:700">Completion Grade</div>
+      <div style="font-size:1.1rem;font-weight:700;color:${gradeColor};margin-top:2px">${g.earned} / ${g.total} points &nbsp;·&nbsp; ${g.pct}% &nbsp;·&nbsp; ${gradeLabel}</div>
+      ${g.missing.length>0?`<div style="font-size:.75rem;color:${gradeColor};margin-top:4px">Missing: ${g.missing.slice(0,3).join(' · ')}${g.missing.length>3?' · and '+(g.missing.length-3)+' more':''}</div>`:''}
+    </div>
+  </div>`;
+
+  ROUNDS.forEach((rd,ri)=>{
+    if(ri>0)html+=`<div class="pg-break"></div>`;
+    if(rd.acting==='ARKHIPOV'){
+      html+=`<div class="pt-sec"><div class="pt-sec-title">Round 5 — The Arkhipov Moment (October 27, 1962)</div>`;
+      const wk=S.team==='US'?'r5_us_wait':(S.role==='hardliner'?'r5_ark_refl':'r5_ussr_wait');
+      html+=`<div class="pt-lbl">Your Individual Response</div><div class="pta">${(gr(wk)||'(no response entered)').replace(/\n/g,'<br>')}</div>`;
+      if(S.team==='USSR'&&S.role==='hardliner'){
+        html+=`<div class="pt-lbl">Arkhipov Vote</div><div class="pt-dec">${S.arkChoice==='yes'?'Voted YES — authorized nuclear torpedo':'Voted NO — overrode the captain'}</div>`;
+      }
+      const arf=gr('r5_ark_refl');
+      if(arf&&!(S.team==='USSR'&&S.role==='hardliner')){
+        html+=`<div class="pt-lbl">Arkhipov Moment Reflection</div><div class="pta">${arf.replace(/\n/g,'<br>')}</div>`;
+      }
+      html+=`</div>`;return;
+    }
+    const isAct=S.team===rd.acting;
+    const rsnK=isAct?`r${rd.id}_act_rsn_${S.role}`:`r${rd.id}_react_rsn_${S.role}`;
+    const decK=isAct?`r${rd.id}_act_dec`:`r${rd.id}_react_dec`;
+    const antK=isAct?`r${rd.id}_act_ant`:`r${rd.id}_react_ant`;
+    const jstK=isAct?`r${rd.id}_act_jst`:`r${rd.id}_react_jst`;
+    const prepK=isAct?`r${rd.id}_obs_${S.role}`:`r${rd.id}_wait_prep_${S.role}`;
+    const reflK=`r${rd.id}_refl`;
+    const actId=gr('r'+rd.id+'_act_dec');
+    const reactId=gr('r'+rd.id+'_react_dec');
+    const actOpt=rd._actOpts.find(o=>o.id===actId);
+    const reactOpt=rd._reactOpts.find(o=>o.id===reactId);
+    const decId=gr(decK);
+    const myOpts=isAct?rd._actOpts:rd._reactOpts;
+    const myOpt=myOpts.find(o=>o.id===decId);
+    const con=(CONS[rd.id]||{})[`${actId}-${reactId}`];
+    html+=`<div class="pt-sec"><div class="pt-sec-title">Round ${rd.id} — ${rd.title} (${rd.date})</div>`;
+    html+=`<div class="pt-lbl">Your Role</div><div class="pt-dec">${isAct?'Acting team (moved first)':'Reacting team (responded)'} · ${ro?ro.label:S.role}</div>`;
+    html+=`<div class="pt-lbl">Your Individual Reasoning</div><div class="pta">${(gr(rsnK)||'(no response entered)').replace(/\n/g,'<br>')}</div>`;
+    if(gr(prepK)){html+=`<div class="pt-lbl">Preparation / Observation While Waiting</div><div class="pta">${gr(prepK).replace(/\n/g,'<br>')}</div>`;}
+    if(myOpt){html+=`<div class="pt-lbl">Your Team's Decision</div><div class="pt-dec"><strong>${myOpt.label}</strong></div>`;}
+    if(gr(antK)){html+=`<div class="pt-lbl">Anticipated Responses &amp; Consequences</div><div class="pta">${gr(antK).replace(/\n/g,'<br>')}</div>`;}
+    html+=`<div class="pt-lbl">Team Justification</div><div class="pta">${(gr(jstK)||'(no response entered)').replace(/\n/g,'<br>')}</div>`;
+    if(actOpt&&reactOpt){html+=`<div class="pt-lbl">What Both Sides Did</div><div class="pt-dec">🇺🇸 US: ${actOpt.label}<br>☭ USSR: ${reactOpt.label}</div>`;}
+    if(con){html+=`<div class="pt-lbl">Outcome</div><div class="pta">${con.t}</div>`;}
+    html+=`<div class="pt-lbl">Your Reflection on This Outcome</div><div class="pta">${(gr(reflK)||'(no response entered)').replace(/\n/g,'<br>')}</div>`;
+    html+=`</div>`;
+  });
+
+  html+=`<div class="pg-break"></div><div class="pt-sec"><div class="pt-sec-title">Debrief Questions — Individual Responses</div>`;
+  DEB_QS.forEach((q,i)=>{
+    html+=`<div class="pt-lbl">Question ${i+1}: ${q.q}</div><div class="pta">${(S.db[q.id]||'(no response entered)').replace(/\n/g,'<br>')}</div>`;
+  });
+  html+=`</div>`;
+
+  pv.innerHTML=html;pv.style.display='block';
+  document.querySelectorAll('.screen').forEach(s=>s.style.display='none');
+  window.print();
+  document.querySelectorAll('.screen').forEach(s=>s.style.display='');
+  const active=document.querySelector('.screen.active');
+  if(active)active.style.display='block';
+  pv.style.display='none';
+}
+</script>
+</body>
+</html>
